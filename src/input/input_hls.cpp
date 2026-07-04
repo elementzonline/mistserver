@@ -1368,7 +1368,12 @@ namespace Mist{
               codecs = codecs.substr(pos + 1);
               if ((codec.compare(0, 4, "mp4a") == 0) || (codec.compare(0, 4, "avc1") == 0) ||
                   (codec.compare(0, 4, "h264") == 0) || (codec.compare(0, 4, "mp3") == 0) ||
-                  (codec.compare(0, 4, "aac") == 0) || (codec.compare(0, 4, "ac3") == 0)){
+                  (codec.compare(0, 4, "aac") == 0) || (codec.compare(0, 4, "ac3") == 0) ||
+                  (codec.compare(0, 4, "hvc1") == 0) || (codec.compare(0, 4, "hev1") == 0) ||
+                  (codec.compare(0, 4, "hevc") == 0)){
+                // HEVC (hvc1/hev1) in MPEG-TS HLS is demuxed fine by the TS input; the master
+                // playlist just advertises a full codec string like "hvc1.1.4.l93.b0.1". Accept
+                // it (codecs are lowercased above) instead of dropping the whole video variant.
                 codecSupported = true;
               }else{
                 FAIL_MSG("codec: %s not supported!", codec.c_str());
