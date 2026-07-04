@@ -738,11 +738,22 @@ namespace Mist{
     zUTC = M.inputLocalVars["zUTC"].asInt();
     meta.setUTCOffset(zUTC, UTCSRC_PROTOCOL);
     // Only apply a source-derived offset when the source actually carried an
-    // EXT-X-PROGRAM-DATE-TIME (zUTC != 0). Without one, leave bootMsOffset alone so
-    // getNext() can anchor the live media clock to real wall-clock arrival time.
-    // Forcing streamOffset (which is 0 here) would map media-time-zero onto the
-    // server boot time and back-date catchup PROGRAM-DATE-TIME on every restart.
-    if (zUTC && M.getLive()){meta.setBootMsOffset(streamOffset);}
+    // EXT-X-PROGRAM-DATE-TIME (zUTC != 0). Without one, fall back to a persisted
+    // wall-clock anchor if we have one (see below); otherwise leave bootMsOffset at 0
+    // so parseSegmentAsLive() derives it from the live edge. Forcing streamOffset
+    // (which is 0 here) would map media-time-zero onto the server boot time and
+    // back-date catchup PROGRAM-DATE-TIME on every restart.
+    if (zUTC && M.getLive()){
+      meta.setBootMsOffset(streamOffset);
+    }else if (M.getLive() && M.inputLocalVars.isMember("bootMsOffset") && M.inputLocalVars["bootMsOffset"].asInt()){
+      // Restore the previously-computed wall-clock anchor for a PDT-less live source
+      // so it survives input restarts. This pull source flaps constantly; persisting
+      // the anchor avoids re-deriving it (and stamping boot-time during the catch-up
+      // window) on every reconnect. The offset is invariant while the source timeline
+      // is continuous; a genuine source restart trips the segment-index-decrease check
+      // above, regenerates the header, and discards the stale anchor.
+      meta.setBootMsOffset(M.inputLocalVars["bootMsOffset"].asInt());
+    }
     return true;
   }
 
@@ -883,6 +894,10 @@ namespace Mist{
     meta.inputLocalVars["playlist_urls"] = playlist_urls;
     meta.inputLocalVars["playlistEntries"] = allEntries;
     meta.inputLocalVars["zUTC"] = zUTC;
+    // Persist the synthesized wall-clock anchor for PDT-less live sources so it is
+    // restored (see readExistingHeader) across the frequent input restarts this flaky
+    // pull source triggers, instead of resetting to boot-time each reconnect.
+    meta.inputLocalVars["bootMsOffset"] = (int64_t)M.getBootMsOffset();
 
     // Write packet ID mappings
     JSON::Value thisMappingsR;
