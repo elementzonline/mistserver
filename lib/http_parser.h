@@ -16,6 +16,11 @@ namespace HTTP{
   /// Reads variables from data, decodes and stores them to storage.
   void parseVars(const std::string &data, std::map<std::string, std::string> &storage, const std::string & separator = "&", bool queryStr = true);
 
+  /// Flussonic compatibility: converts a "shift" query value (seconds behind
+  /// live) into the equivalent "startunix" value ("-N"). Returns an empty
+  /// string when shiftVal is absent, zero, negative, or non-numeric.
+  std::string flussonicShiftToStartunix(const std::string &shiftVal);
+
   /// Variable generator from std::map<std::string, std::string> structure.
   /// Reads from vars and returns a properly encoded argument list string.
   std::string argStr(const std::map<std::string, std::string> & vars, bool withQuestionMark = true);

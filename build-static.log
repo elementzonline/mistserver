@@ -1,0 +1,857 @@
+ninja: Entering directory `build'
+[1/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_aesce.c.o
+[2/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_aesni.c.o
+[3/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_asn1parse.c.o
+[4/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_aria.c.o
+[5/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_aes.c.o
+[6/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_base64.c.o
+[7/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_asn1write.c.o
+[8/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_bignum_mod.c.o
+[9/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_bignum_core.c.o
+[10/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_bignum_mod_raw.c.o
+[11/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_block_cipher.c.o
+[12/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_ccm.c.o
+[13/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_bignum.c.o
+[14/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_camellia.c.o
+[15/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_chachapoly.c.o
+[16/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_chacha20.c.o
+[17/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_cipher_wrap.c.o
+[18/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_constant_time.c.o
+[19/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_cipher.c.o
+[20/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_ctr_drbg.c.o
+[21/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_des.c.o
+[22/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_cmac.c.o
+[23/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_dhm.c.o
+[24/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_ecdh.c.o
+[25/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_ecdsa.c.o
+[26/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_ecjpake.c.o
+[27/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_ecp_curves_new.c.o
+[28/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_entropy.c.o
+[29/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_ecp.c.o
+[30/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_entropy_poll.c.o
+[31/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_ecp_curves.c.o
+[32/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_hkdf.c.o
+[33/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_gcm.c.o
+[34/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_error.c.o
+[35/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_hmac_drbg.c.o
+[36/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_lmots.c.o
+[37/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_lms.c.o
+[38/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_memory_buffer_alloc.c.o
+[39/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_md5.c.o
+[40/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_md.c.o
+[41/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_nist_kw.c.o
+[42/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_padlock.c.o
+[43/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_pem.c.o
+[44/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_oid.c.o
+[45/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_pk.c.o
+[46/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_pk_ecc.c.o
+[47/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_pk_wrap.c.o
+[48/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_pkcs5.c.o
+[49/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_pkcs12.c.o
+[50/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_platform.c.o
+[51/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_pkwrite.c.o
+[52/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_pkparse.c.o
+[53/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_platform_util.c.o
+[54/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_poly1305.c.o
+[55/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_aead.c.o
+[56/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_cipher.c.o
+[57/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_client.c.o
+[58/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_driver_wrappers_no_static.c.o
+[59/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_ffdh.c.o
+[60/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_ecp.c.o
+[61/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_hash.c.o
+[62/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_pake.c.o
+[63/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_mac.c.o
+[64/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_se.c.o
+[65/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_rsa.c.o
+[66/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_storage.c.o
+[67/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto.c.o
+[68/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_crypto_slot_management.c.o
+[69/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_its_file.c.o
+[70/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_psa_util.c.o
+[71/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_ripemd160.c.o
+[72/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_rsa_alt_helpers.c.o
+[73/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_sha1.c.o
+[74/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_sha256.c.o
+[75/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_rsa.c.o
+[76/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_sha512.c.o
+[77/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_threading.c.o
+[78/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_timing.c.o
+[79/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_sha3.c.o
+[80/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_version.c.o
+[81/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedcrypto.a.p/library_version_features.c.o
+[82/813] Linking static target subprojects/mbedtls-3.6.5/libmbedcrypto.a
+[83/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedx509.a.p/library_pkcs7.c.o
+[84/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedx509.a.p/library_x509_create.c.o
+[85/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedx509.a.p/library_x509.c.o
+[86/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedx509.a.p/library_x509_crl.c.o
+[87/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedx509.a.p/library_x509_csr.c.o
+[88/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedx509.a.p/library_x509write.c.o
+[89/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedx509.a.p/library_x509_crt.c.o
+[90/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedx509.a.p/library_x509write_csr.c.o
+[91/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedx509.a.p/library_x509write_crt.c.o
+[92/813] Linking static target subprojects/mbedtls-3.6.5/libmbedx509.a
+[93/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_mps_reader.c.o
+[94/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_debug.c.o
+[95/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_mps_trace.c.o
+[96/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_cache.c.o
+[97/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_ciphersuites.c.o
+[98/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_net_sockets.c.o
+[99/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_cookie.c.o
+[100/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_client.c.o
+[101/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_debug_helpers_generated.c.o
+[102/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_ticket.c.o
+[103/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_tls12_client.c.o
+[104/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_msg.c.o
+[105/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_tls.c.o
+[106/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_tls13_keys.c.o
+[107/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_tls12_server.c.o
+[108/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_tls13_server.c.o
+[109/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_tls13_client.c.o
+[110/813] Compiling C object subprojects/mbedtls-3.6.5/libmbedtls.a.p/library_ssl_tls13_generic.c.o
+[111/813] Linking static target subprojects/mbedtls-3.6.5/libmbedtls.a
+[112/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_cipher_cipher_test_cases.c.o
+[113/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_cipher_null_cipher.c.o
+[114/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_cipher_cipher.c.o
+[115/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_cipher_aes_icm_mbedtls.c.o
+[116/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/srtp_srtp.c.o
+[117/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_cipher_aes_gcm_mbedtls.c.o
+[118/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_hash_auth_test_cases.c.o
+[119/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_hash_auth.c.o
+[120/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_hash_hmac_mbedtls.c.o
+[121/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_hash_null_auth.c.o
+[122/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_kernel_alloc.c.o
+[123/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_kernel_err.c.o
+[124/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_kernel_crypto_kernel.c.o
+[125/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_kernel_key.c.o
+[126/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_replay_rdb.c.o
+[127/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_math_datatypes.c.o
+[128/813] Compiling C object subprojects/libsrtp/libsrtp2.a.p/crypto_replay_rdbx.c.o
+[129/813] Linking static target subprojects/libsrtp/libsrtp2.a
+[130/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_user_environment.c.o
+[131/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_user_recv_thread.c.o
+[132/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_user_mbuf.c.o
+[133/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_asconf.c.o
+[134/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_user_socket.c.o
+[135/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_auth.c.o
+[136/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_bsd_addr.c.o
+[137/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_callout.c.o
+[138/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_cc_functions.c.o
+[139/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_crc32.c.o
+[140/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_input.c.o
+../subprojects/usrsctp/usrsctplib/netinet/sctp_input.c: In function ‘sctp_handle_stream_reset_response’:
+../subprojects/usrsctp/usrsctplib/netinet/sctp_input.c:3942:99: warning: taking address of packed member of ‘struct sctp_stream_reset_out_request’ may result in an unaligned pointer value [-Waddress-of-packed-member]
+ 3942 |                                         sctp_reset_out_streams(stcb, number_entries, req_out_param->list_of_streams);
+      |                                                                                      ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+../subprojects/usrsctp/usrsctplib/netinet/sctp_input.c:3955:101: warning: taking address of packed member of ‘struct sctp_stream_reset_out_request’ may result in an unaligned pointer value [-Waddress-of-packed-member]
+ 3955 |                                         sctp_reset_clear_pending(stcb, number_entries, req_out_param->list_of_streams);
+      |                                                                                        ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~
+../subprojects/usrsctp/usrsctplib/netinet/sctp_input.c: In function ‘sctp_handle_str_reset_request_out’:
+../subprojects/usrsctp/usrsctplib/netinet/sctp_input.c:4233:71: warning: taking address of packed member of ‘struct sctp_stream_reset_out_request’ may result in an unaligned pointer value [-Waddress-of-packed-member]
+ 4233 |                         sctp_reset_in_stream(stcb, number_entries, req->list_of_streams);
+      |                                                                    ~~~^~~~~~~~~~~~~~~~~
+[141/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_indata.c.o
+[142/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_peeloff.c.o
+[143/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_sha1.c.o
+[144/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_ss_functions.c.o
+[145/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_sysctl.c.o
+[146/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_pcb.c.o
+[147/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_userspace.c.o
+[148/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_output.c.o
+../subprojects/usrsctp/usrsctplib/netinet/sctp_output.c: In function ‘send_forward_tsn’:
+../subprojects/usrsctp/usrsctplib/netinet/sctp_output.c:10992:36: warning: converting a packed ‘struct sctp_forward_tsn_chunk’ pointer (alignment 1) to a ‘struct sctp_strseq_mid’ pointer (alignment 4) may result in an unaligned pointer value [-Waddress-of-packed-member]
+10992 |                 strseq_m = (struct sctp_strseq_mid *)fwdtsn;
+      |                                    ^~~~~~~~~~~~~~~
+In file included from ../subprojects/usrsctp/usrsctplib/netinet/sctp_output.c:46:
+../subprojects/usrsctp/usrsctplib/netinet/sctp_header.h:394:8: note: defined here
+  394 | struct sctp_forward_tsn_chunk {
+      |        ^~~~~~~~~~~~~~~~~~~~~~
+../subprojects/usrsctp/usrsctplib/netinet/sctp_header.h:405:8: note: defined here
+  405 | struct sctp_strseq_mid {
+      |        ^~~~~~~~~~~~~~~
+../subprojects/usrsctp/usrsctplib/netinet/sctp_output.c: In function ‘sctp_send_sack’:
+../subprojects/usrsctp/usrsctplib/netinet/sctp_output.c:11381:17: warning: converting a packed ‘struct sctp_gap_ack_block’ pointer (alignment 1) to a ‘uint32_t’ {aka ‘unsigned int’} pointer (alignment 4) may result in an unaligned pointer value [-Waddress-of-packed-member]
+11381 |                 dup = (uint32_t *) gap_descriptor;
+      |                 ^~~
+../subprojects/usrsctp/usrsctplib/netinet/sctp_header.h:258:8: note: defined here
+  258 | struct sctp_gap_ack_block {
+      |        ^~~~~~~~~~~~~~~~~~
+../subprojects/usrsctp/usrsctplib/netinet/sctp_output.c: In function ‘sctp_send_resp_msg’:
+../subprojects/usrsctp/usrsctplib/netinet/sctp_output.c:11788:31: warning: converting a packed ‘struct sctphdr’ pointer (alignment 1) to a ‘struct udphdr’ pointer (alignment 2) may result in an unaligned pointer value [-Waddress-of-packed-member]
+11788 |                 udp = (struct udphdr *)shout;
+      |                               ^~~~~~
+In file included from ../subprojects/usrsctp/usrsctplib/netinet/sctp_os_userspace.h:1032,
+                 from ../subprojects/usrsctp/usrsctplib/netinet/sctp_os.h:73,
+                 from ../subprojects/usrsctp/usrsctplib/netinet/sctp_output.c:40:
+../subprojects/usrsctp/usrsctplib/netinet/sctp.h:58:8: note: defined here
+   58 | struct sctphdr {
+      |        ^~~~~~~
+In file included from ../subprojects/usrsctp/usrsctplib/netinet/sctp_output.c:67:
+/usr/include/netinet/udp.h:55:8: note: defined here
+   55 | struct udphdr
+      |        ^~~~~~
+[149/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_timer.c.o
+[150/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet6_sctp6_usrreq.c.o
+[151/813] Compiling C object subprojects/usrsctp/chargen_server_upcall.p/programs_programs_helper.c.o
+[152/813] Compiling C object subprojects/usrsctp/chargen_server_upcall.p/programs_chargen_server_upcall.c.o
+[153/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctputil.c.o
+[154/813] Compiling C object subprojects/usrsctp/client.p/programs_client.c.o
+[155/813] Compiling C object subprojects/usrsctp/client.p/programs_programs_helper.c.o
+[156/813] Compiling C object subprojects/usrsctp/libusrsctp.a.p/usrsctplib_netinet_sctp_usrreq.c.o
+[157/813] Compiling C object subprojects/usrsctp/st_client.p/programs_programs_helper.c.o
+[158/813] Linking static target subprojects/usrsctp/libusrsctp.a
+[159/813] Compiling C object subprojects/usrsctp/client_upcall.p/programs_programs_helper.c.o
+[160/813] Compiling C object subprojects/usrsctp/st_client.p/programs_st_client.c.o
+[161/813] Linking target subprojects/usrsctp/chargen_server_upcall
+[162/813] Linking target subprojects/usrsctp/st_client
+[163/813] Linking target subprojects/usrsctp/client
+[164/813] Compiling C object subprojects/usrsctp/daytime_server.p/programs_programs_helper.c.o
+[165/813] Compiling C object subprojects/usrsctp/daytime_server.p/programs_daytime_server.c.o
+[166/813] Compiling C object subprojects/usrsctp/client_upcall.p/programs_client_upcall.c.o
+[167/813] Compiling C object subprojects/usrsctp/daytime_server_upcall.p/programs_programs_helper.c.o
+[168/813] Linking target subprojects/usrsctp/client_upcall
+[169/813] Linking target subprojects/usrsctp/daytime_server
+[170/813] Compiling C object subprojects/usrsctp/daytime_server_upcall.p/programs_daytime_server_upcall.c.o
+[171/813] Compiling C object subprojects/usrsctp/discard_server.p/programs_discard_server.c.o
+[172/813] Compiling C object subprojects/usrsctp/discard_server.p/programs_programs_helper.c.o
+[173/813] Linking target subprojects/usrsctp/daytime_server_upcall
+[174/813] Linking target subprojects/usrsctp/discard_server
+[175/813] Compiling C object subprojects/usrsctp/discard_server_upcall.p/programs_discard_server_upcall.c.o
+[176/813] Compiling C object subprojects/usrsctp/discard_server_upcall.p/programs_programs_helper.c.o
+[177/813] Linking target subprojects/usrsctp/discard_server_upcall
+[178/813] Compiling C object subprojects/usrsctp/echo_server.p/programs_programs_helper.c.o
+[179/813] Compiling C object subprojects/usrsctp/echo_server.p/programs_echo_server.c.o
+[180/813] Compiling C object subprojects/usrsctp/echo_server_upcall.p/programs_programs_helper.c.o
+[181/813] Compiling C object subprojects/usrsctp/echo_server_upcall.p/programs_echo_server_upcall.c.o
+[182/813] Linking target subprojects/usrsctp/echo_server
+[183/813] Linking target subprojects/usrsctp/echo_server_upcall
+[184/813] Compiling C object subprojects/usrsctp/ekr_client.p/programs_programs_helper.c.o
+[185/813] Compiling C object subprojects/usrsctp/ekr_client.p/programs_ekr_client.c.o
+[186/813] Linking target subprojects/usrsctp/ekr_client
+[187/813] Compiling C object subprojects/usrsctp/ekr_loop.p/programs_programs_helper.c.o
+[188/813] Compiling C object subprojects/usrsctp/ekr_loop.p/programs_ekr_loop.c.o
+[189/813] Compiling C object subprojects/usrsctp/ekr_loop_upcall.p/programs_programs_helper.c.o
+[190/813] Linking target subprojects/usrsctp/ekr_loop
+[191/813] Compiling C object subprojects/usrsctp/ekr_loop_upcall.p/programs_ekr_loop_upcall.c.o
+[192/813] Compiling C object subprojects/usrsctp/ekr_peer.p/programs_programs_helper.c.o
+[193/813] Linking target subprojects/usrsctp/ekr_loop_upcall
+[194/813] Compiling C object subprojects/usrsctp/ekr_peer.p/programs_ekr_peer.c.o
+[195/813] Compiling C object subprojects/usrsctp/ekr_server.p/programs_programs_helper.c.o
+[196/813] Linking target subprojects/usrsctp/ekr_peer
+[197/813] Compiling C object subprojects/usrsctp/ekr_server.p/programs_ekr_server.c.o
+[198/813] Compiling C object subprojects/usrsctp/http_client.p/programs_programs_helper.c.o
+[199/813] Linking target subprojects/usrsctp/ekr_server
+[200/813] Compiling C object subprojects/usrsctp/http_client.p/programs_http_client.c.o
+[201/813] Compiling C object subprojects/usrsctp/http_client_upcall.p/programs_http_client_upcall.c.o
+[202/813] Linking target subprojects/usrsctp/http_client
+[203/813] Compiling C object subprojects/usrsctp/http_client_upcall.p/programs_programs_helper.c.o
+[204/813] Linking target subprojects/usrsctp/http_client_upcall
+[205/813] Compiling C object subprojects/usrsctp/rtcweb.p/programs_programs_helper.c.o
+[206/813] Compiling C object subprojects/usrsctp/test_libmgmt.p/programs_programs_helper.c.o
+[207/813] Compiling C object subprojects/usrsctp/test_libmgmt.p/programs_test_libmgmt.c.o
+[208/813] Compiling C object subprojects/usrsctp/rtcweb.p/programs_rtcweb.c.o
+[209/813] Linking target subprojects/usrsctp/test_libmgmt
+[210/813] Compiling C object subprojects/usrsctp/test_timer.p/programs_programs_helper.c.o
+[211/813] Compiling C object subprojects/usrsctp/test_timer.p/programs_test_timer.c.o
+[212/813] Compiling C object subprojects/usrsctp/tsctp.p/programs_programs_helper.c.o
+[213/813] Linking target subprojects/usrsctp/rtcweb
+[214/813] Linking target subprojects/usrsctp/test_timer
+[215/813] Compiling C object subprojects/usrsctp/tsctp.p/programs_tsctp.c.o
+[216/813] Linking target subprojects/usrsctp/tsctp
+[217/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_buffer_tools.cpp.o
+[218/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_buffer_snd.cpp.o
+[219/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_cache.cpp.o
+[220/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_buffer_rcv.cpp.o
+[221/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_channel.cpp.o
+[222/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_common.cpp.o
+[223/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_api.cpp.o
+[224/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_crypto.cpp.o
+[225/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_epoll.cpp.o
+[226/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_handshake.cpp.o
+[227/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_list.cpp.o
+[228/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_fec.cpp.o
+[229/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_logger_default.cpp.o
+[230/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_logger_defs.cpp.o
+[231/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_md5.cpp.o
+[232/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_logging.cpp.o
+[233/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_packet.cpp.o
+[234/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_core.cpp.o
+[235/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_packetfilter.cpp.o
+[236/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_congctl.cpp.o
+[237/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_srt_c_api.cpp.o
+[238/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_strerror_defs.cpp.o
+[239/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_queue.cpp.o
+[240/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_socketconfig.cpp.o
+[241/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_tsbpd_time.cpp.o
+[242/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_sync.cpp.o
+[243/813] Compiling C++ object subprojects/srt/libsrt.a.p/haicrypt_haicrypt_log.cpp.o
+[244/813] Compiling C object subprojects/srt/libsrt.a.p/srtcore_srt_compat.c.o
+[245/813] Compiling C object subprojects/srt/libsrt.a.p/haicrypt_cryspr.c.o
+[246/813] Compiling C object subprojects/srt/libsrt.a.p/haicrypt_cryspr-mbedtls.c.o
+[247/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_window.cpp.o
+[248/813] Compiling C object subprojects/srt/libsrt.a.p/haicrypt_hcrypt.c.o
+[249/813] Compiling C object subprojects/srt/libsrt.a.p/haicrypt_hcrypt_ctx_rx.c.o
+[250/813] Compiling C object subprojects/srt/libsrt.a.p/haicrypt_hcrypt_ctx_tx.c.o
+[251/813] Compiling C object subprojects/srt/libsrt.a.p/haicrypt_hcrypt_rx.c.o
+[252/813] Compiling C object subprojects/srt/libsrt.a.p/haicrypt_hcrypt_sa.c.o
+[253/813] Compiling C object subprojects/srt/libsrt.a.p/haicrypt_hcrypt_tx.c.o
+[254/813] Compiling C++ object subprojects/srt/libsrt.a.p/srtcore_sync_posix.cpp.o
+[255/813] Compiling C object subprojects/srt/libsrt.a.p/haicrypt_hcrypt_xpt_srt.c.o
+[256/813] Linking static target subprojects/srt/libsrt.a
+[257/813] Compiling C++ object generated/make_html.p/.._src_make_html.cpp.o
+[258/813] Linking target generated/make_html
+[259/813] Generating generated/gen_html with a custom command
+[260/813] Compiling C++ object generated/sourcery.p/.._src_sourcery.cpp.o
+[261/813] Compiling C++ object lib/libmist.a.p/adts.cpp.o
+[262/813] Linking target generated/sourcery
+[263/813] Generating generated/embed_player.js.h with a custom command
+[264/813] Generating generated/embed_html5.js.h with a custom command
+[265/813] Generating generated/embed_flash_strobe.js.h with a custom command
+[266/813] Generating generated/embed_dashjs.js.h with a custom command
+[267/813] Generating generated/embed_videojs.js.h with a custom command
+[268/813] Generating generated/embed_wheprtc.js.h with a custom command
+[269/813] Generating generated/embed_webrtc.js.h with a custom command
+[270/813] Generating generated/embed_mews.js.h with a custom command
+[271/813] Generating generated/embed_flv.js.h with a custom command
+[272/813] Generating generated/embed_hlsjs.js.h with a custom command
+[273/813] Generating generated/embed_rawws.js.h with a custom command
+[274/813] Generating generated/embed_player_dash_lic.js.h with a custom command
+[275/813] Generating generated/embed_player_dash.js.h with a custom command
+[276/813] Generating generated/embed_player_video.js.h with a custom command
+[277/813] Generating generated/embed_player_flv.js.h with a custom command
+[278/813] Generating generated/embed_player_hlsjs.js.h with a custom command
+[279/813] Generating generated/embed_player_libde265.js.h with a custom command
+[280/813] Generating generated/embed_skin_default.css.h with a custom command
+[281/813] Generating generated/embed_skin_dev.css.h with a custom command
+[282/813] Generating generated/embed_skin_videojs.css.h with a custom command
+[283/813] Generating generated/embed_server.html with a custom command
+[284/813] Compiling C++ object lib/libmist.a.p/auth.cpp.o
+[285/813] Compiling C++ object lib/libmist.a.p/av1.cpp.o
+[286/813] Compiling C++ object lib/libmist.a.p/amf.cpp.o
+[287/813] Compiling C++ object lib/libmist.a.p/encode.cpp.o
+[288/813] Compiling C++ object lib/libmist.a.p/bitfields.cpp.o
+[289/813] Compiling C++ object lib/libmist.a.p/bitstream.cpp.o
+[290/813] Compiling C++ object lib/libmist.a.p/cmaf.cpp.o
+[291/813] Compiling C++ object lib/libmist.a.p/comms.cpp.o
+[292/813] Compiling C++ object lib/libmist.a.p/config.cpp.o
+[293/813] Compiling C++ object lib/libmist.a.p/ev.cpp.o
+[294/813] Compiling C++ object lib/libmist.a.p/flv_tag.cpp.o
+[295/813] Compiling C++ object lib/libmist.a.p/h264.cpp.o
+[296/813] Compiling C++ object lib/libmist.a.p/dtsc.cpp.o
+[297/813] Compiling C++ object lib/libmist.a.p/hls_support.cpp.o
+[298/813] Compiling C++ object lib/libmist.a.p/http_parser.cpp.o
+[299/813] Compiling C++ object lib/libmist.a.p/h265.cpp.o
+[300/813] Compiling C++ object lib/libmist.a.p/downloader.cpp.o
+[301/813] Compiling C++ object lib/libmist.a.p/jwt.cpp.o
+[302/813] Compiling C++ object lib/libmist.a.p/json.cpp.o
+[303/813] Compiling C++ object lib/libmist.a.p/mp4_adobe.cpp.o
+[304/813] Compiling C++ object lib/libmist.a.p/langcodes.cpp.o
+[305/813] Compiling C++ object lib/libmist.a.p/mp4.cpp.o
+[306/813] Compiling C++ object lib/libmist.a.p/mp4_dash.cpp.o
+[307/813] Compiling C++ object lib/libmist.a.p/mp4_encryption.cpp.o
+[308/813] Compiling C++ object lib/libmist.a.p/mp4_ms.cpp.o
+[309/813] Compiling C++ object lib/libmist.a.p/mpeg.cpp.o
+[310/813] Compiling C++ object lib/libmist.a.p/mp4_stream.cpp.o
+[311/813] Compiling C++ object lib/libmist.a.p/nal.cpp.o
+[312/813] Compiling C++ object lib/libmist.a.p/pixels.cpp.o
+[313/813] Compiling C++ object lib/libmist.a.p/mp4_generic.cpp.o
+[314/813] Compiling C++ object lib/libmist.a.p/ogg.cpp.o
+[315/813] Compiling C++ object lib/libmist.a.p/rtmpchunks.cpp.o
+[316/813] Compiling C++ object lib/libmist.a.p/procs.cpp.o
+[317/813] Compiling C++ object lib/libmist.a.p/rtp_fec.cpp.o
+[318/813] Compiling C++ object lib/libmist.a.p/rtp.cpp.o
+[319/813] Compiling C++ object lib/libmist.a.p/segmentreader.cpp.o
+[320/813] Compiling C++ object lib/libmist.a.p/shared_memory.cpp.o
+[321/813] Compiling C++ object lib/libmist.a.p/sdp.cpp.o
+[322/813] Compiling C++ object lib/libmist.a.p/sdp_media.cpp.o
+[323/813] Compiling C++ object lib/libmist.a.p/theora.cpp.o
+[324/813] Compiling C++ object lib/libmist.a.p/timing.cpp.o
+[325/813] Compiling C++ object lib/libmist.a.p/socket.cpp.o
+[326/813] Compiling C++ object lib/libmist.a.p/stream.cpp.o
+[327/813] Compiling C++ object lib/libmist.a.p/ts_packet.cpp.o
+[328/813] Compiling C++ object lib/libmist.a.p/vorbis.cpp.o
+[329/813] Compiling C++ object lib/libmist.a.p/util.cpp.o
+[330/813] Compiling C++ object lib/libmist.a.p/opus.cpp.o
+[331/813] Compiling C++ object lib/libmist.a.p/triggers.cpp.o
+[332/813] Compiling C++ object lib/libmist.a.p/riff.cpp.o
+[333/813] Compiling C++ object lib/libmist.a.p/ts_stream.cpp.o
+[334/813] Compiling C++ object lib/libmist.a.p/ebml_socketglue.cpp.o
+[335/813] Compiling C++ object lib/libmist.a.p/ebml.cpp.o
+[336/813] Compiling C++ object lib/libmist.a.p/url.cpp.o
+[337/813] Compiling C++ object lib/libmist.a.p/urireader.cpp.o
+[338/813] Compiling C++ object lib/libmist.a.p/websocket.cpp.o
+[339/813] Compiling C++ object lib/libmist.a.p/flac.cpp.o
+[340/813] Compiling C++ object lib/libmist.a.p/certificate.cpp.o
+[341/813] Compiling C++ object lib/libmist.a.p/stun.cpp.o
+[342/813] Generating mist/copyadts.h with a custom command
+[343/813] Generating mist/copyamf.h with a custom command
+[344/813] Generating mist/copyauth.h with a custom command
+[345/813] Generating mist/copyav1.h with a custom command
+[346/813] Generating mist/copyencode.h with a custom command
+[347/813] Generating mist/copybitfields.h with a custom command
+[348/813] Generating mist/copybitstream.h with a custom command
+[349/813] Generating mist/copycertificate.h with a custom command
+[350/813] Generating mist/copychecksum.h with a custom command
+[351/813] Generating mist/copycmaf.h with a custom command
+[352/813] Generating mist/copycomms.h with a custom command
+[353/813] Generating mist/copyconfig.h with a custom command
+[354/813] Generating mist/copydefines.h with a custom command
+[355/813] Generating mist/copydtsc.h with a custom command
+[356/813] Generating mist/copyev.h with a custom command
+[357/813] Generating mist/copyflv_tag.h with a custom command
+[358/813] Generating mist/copyh264.h with a custom command
+[359/813] Generating mist/copyh265.h with a custom command
+[360/813] Generating mist/copyhls_support.h with a custom command
+[361/813] Generating mist/copyhttp_parser.h with a custom command
+[362/813] Generating mist/copydownloader.h with a custom command
+[363/813] Generating mist/copyjson.h with a custom command
+[364/813] Generating mist/copyjwt.h with a custom command
+[365/813] Generating mist/copylangcodes.h with a custom command
+[366/813] Generating mist/copymp4_adobe.h with a custom command
+[367/813] Generating mist/copymp4_dash.h with a custom command
+[368/813] Generating mist/copymp4_encryption.h with a custom command
+[369/813] Generating mist/copymp4_generic.h with a custom command
+[370/813] Generating mist/copymp4.h with a custom command
+[371/813] Generating mist/copymp4_ms.h with a custom command
+[372/813] Generating mist/copymp4_stream.h with a custom command
+[373/813] Generating mist/copympeg.h with a custom command
+[374/813] Generating mist/copynal.h with a custom command
+[375/813] Generating mist/copyogg.h with a custom command
+[376/813] Generating mist/copypixels.h with a custom command
+[377/813] Generating mist/copyprocs.h with a custom command
+[378/813] Generating mist/copyrtmpchunks.h with a custom command
+[379/813] Generating mist/copyrtp_fec.h with a custom command
+[380/813] Generating mist/copyrtp.h with a custom command
+[381/813] Generating mist/copysegmentreader.h with a custom command
+[382/813] Generating mist/copysdp.h with a custom command
+[383/813] Generating mist/copysdp_media.h with a custom command
+[384/813] Generating mist/copyshared_memory.h with a custom command
+[385/813] Generating mist/copysocket.h with a custom command
+[386/813] Generating mist/copystream.h with a custom command
+[387/813] Generating mist/copystun.h with a custom command
+[388/813] Generating mist/copytheora.h with a custom command
+[389/813] Generating mist/copytiming.h with a custom command
+[390/813] Generating mist/copyts_packet.h with a custom command
+[391/813] Generating mist/copyts_stream.h with a custom command
+[392/813] Generating mist/copyutil.h with a custom command
+[393/813] Generating mist/copyvorbis.h with a custom command
+[394/813] Generating mist/copytriggers.h with a custom command
+[395/813] Generating mist/copyopus.h with a custom command
+[396/813] Generating mist/copyriff.h with a custom command
+[397/813] Generating mist/copyebml.h with a custom command
+[398/813] Generating mist/copyebml_socketglue.h with a custom command
+[399/813] Generating mist/copywebsocket.h with a custom command
+[400/813] Generating mist/copyurl.h with a custom command
+[401/813] Generating mist/copyurireader.h with a custom command
+[402/813] Generating mist/copyflac.h with a custom command
+[403/813] Generating mist/copysocket_srt.h with a custom command
+[404/813] Generating mist/copyencryption.h with a custom command
+[405/813] Compiling C++ object lib/libmist.a.p/encryption.cpp.o
+[406/813] Linking static target lib/libmist.a
+[407/813] Compiling C++ object lib/libmist_srt.a.p/socket_srt.cpp.o
+[408/813] Linking static target lib/libmist_srt.a
+[409/813] Compiling C++ object src/process/libmist_process_common.a.p/.._output_output_ebml.cpp.o
+[410/813] Compiling C++ object src/process/libmist_process_common.a.p/.._input_input_ebml.cpp.o
+[411/813] Compiling C++ object src/process/libmist_process_common.a.p/.._input_input.cpp.o
+[412/813] Compiling C++ object src/process/libmist_process_common.a.p/.._output_output_http.cpp.o
+[413/813] Compiling C++ object MistAnalyserRTMP.p/src_analysers_mist_analyse.cpp.o
+[414/813] Compiling C++ object src/process/libmist_process_common.a.p/.._io.cpp.o
+[415/813] Compiling C++ object MistAnalyserRTMP.p/src_analysers_analyser.cpp.o
+[416/813] Compiling C++ object src/process/libmist_process_common.a.p/.._output_output.cpp.o
+[417/813] Linking static target src/process/libmist_process_common.a
+[418/813] Compiling C++ object MistAnalyserRTMP.p/src_analysers_analyser_rtmp.cpp.o
+[419/813] Compiling C++ object MistAnalyserFLV.p/src_analysers_mist_analyse.cpp.o
+[420/813] Compiling C++ object MistAnalyserFLV.p/src_analysers_analyser.cpp.o
+[421/813] Linking target MistAnalyserRTMP
+[422/813] Compiling C++ object MistAnalyserDTSC.p/src_analysers_mist_analyse.cpp.o
+[423/813] Compiling C++ object MistAnalyserFLV.p/src_analysers_analyser_flv.cpp.o
+[424/813] Compiling C++ object MistAnalyserDTSC.p/src_analysers_analyser.cpp.o
+[425/813] Linking target MistAnalyserFLV
+[426/813] Compiling C++ object MistAnalyserDTSC.p/src_analysers_analyser_dtsc.cpp.o
+[427/813] Compiling C++ object MistAnalyserOGG.p/src_analysers_mist_analyse.cpp.o
+[428/813] Compiling C++ object MistAnalyserOGG.p/src_analysers_analyser.cpp.o
+[429/813] Linking target MistAnalyserDTSC
+[430/813] Compiling C++ object MistAnalyserEBML.p/src_analysers_mist_analyse.cpp.o
+[431/813] Compiling C++ object MistAnalyserEBML.p/src_analysers_analyser.cpp.o
+[432/813] Compiling C++ object MistAnalyserOGG.p/src_analysers_analyser_ogg.cpp.o
+[433/813] Linking target MistAnalyserOGG
+[434/813] Compiling C++ object MistAnalyserTS.p/src_analysers_mist_analyse.cpp.o
+[435/813] Compiling C++ object MistAnalyserEBML.p/src_analysers_analyser_ebml.cpp.o
+[436/813] Linking target MistAnalyserEBML
+[437/813] Compiling C++ object MistAnalyserTS.p/src_analysers_analyser.cpp.o
+[438/813] Compiling C++ object MistAnalyserMP4.p/src_analysers_analyser.cpp.o
+[439/813] Compiling C++ object MistAnalyserTS.p/src_analysers_analyser_ts.cpp.o
+[440/813] Compiling C++ object MistAnalyserMP4.p/src_analysers_mist_analyse.cpp.o
+[441/813] Linking target MistAnalyserTS
+[442/813] Compiling C++ object MistAnalyserH264.p/src_analysers_mist_analyse.cpp.o
+[443/813] Compiling C++ object MistAnalyserH264.p/src_analysers_analyser.cpp.o
+[444/813] Compiling C++ object MistAnalyserH264.p/src_analysers_analyser_h264.cpp.o
+[445/813] Compiling C++ object MistAnalyserMP4.p/src_analysers_analyser_mp4.cpp.o
+[446/813] Compiling C++ object MistAnalyserAV1.p/src_analysers_mist_analyse.cpp.o
+[447/813] Linking target MistAnalyserMP4
+[448/813] Linking target MistAnalyserH264
+[449/813] Compiling C++ object MistAnalyserAV1.p/src_analysers_analyser.cpp.o
+[450/813] Compiling C++ object MistAnalyserAV1.p/src_analysers_analyser_av1.cpp.o
+[451/813] Compiling C++ object MistAnalyserHLS.p/src_analysers_mist_analyse.cpp.o
+[452/813] Linking target MistAnalyserAV1
+[453/813] Compiling C++ object MistAnalyserHLS.p/src_analysers_analyser.cpp.o
+[454/813] Compiling C++ object MistAnalyserRIFF.p/src_analysers_mist_analyse.cpp.o
+[455/813] Compiling C++ object MistAnalyserHLS.p/src_analysers_analyser_hls.cpp.o
+[456/813] Compiling C++ object MistAnalyserRIFF.p/src_analysers_analyser.cpp.o
+[457/813] Linking target MistAnalyserHLS
+[458/813] Compiling C++ object MistAnalyserRIFF.p/src_analysers_analyser_riff.cpp.o
+[459/813] Linking target MistAnalyserRIFF
+[460/813] Compiling C++ object MistAnalyserRTSP.p/src_analysers_analyser.cpp.o
+[461/813] Compiling C++ object MistAnalyserRTSP.p/src_analysers_mist_analyse.cpp.o
+[462/813] Compiling C++ object MistAnalyserFLAC.p/src_analysers_mist_analyse.cpp.o
+[463/813] Compiling C++ object MistAnalyserFLAC.p/src_analysers_analyser.cpp.o
+[464/813] Compiling C++ object MistAnalyserRTSP.p/src_analysers_analyser_rtsp.cpp.o
+[465/813] Compiling C++ object MistAnalyserFLAC.p/src_analysers_analyser_flac.cpp.o
+[466/813] Linking target MistAnalyserRTSP
+[467/813] Linking target MistAnalyserFLAC
+[468/813] Compiling C++ object MistTranslateH264.p/src_analysers_h264_translate.cpp.o
+[469/813] Compiling C++ object MistUtilMETA.p/src_utils_util_meta.cpp.o
+[470/813] Compiling C++ object MistUtilRAX.p/src_utils_util_rax.cpp.o
+[471/813] Linking target MistTranslateH264
+[472/813] Linking target MistUtilMETA
+[473/813] Linking target MistUtilRAX
+[474/813] Compiling C++ object MistUtilAMF.p/src_utils_util_amf.cpp.o
+[475/813] Compiling C++ object MistUtilCertbot.p/src_utils_util_certbot.cpp.o
+[476/813] Linking target MistUtilAMF
+[477/813] Compiling C++ object MistUtilNuke.p/src_utils_util_nuke.cpp.o
+[478/813] Linking target MistUtilCertbot
+[479/813] Compiling C++ object MistUtilLog.p/src_utils_util_log.cpp.o
+[480/813] Linking target MistUtilNuke
+[481/813] Linking target MistUtilLog
+[482/813] Compiling C++ object MistUtilWriter.p/src_utils_util_writer.cpp.o
+[483/813] Compiling C++ object MistUtilHealth.p/src_utils_util_health.cpp.o
+[484/813] Linking target MistUtilWriter
+[485/813] Linking target MistUtilHealth
+[486/813] Compiling C++ object MistInHLS.p/src_input_mist_in.cpp.o
+[487/813] Compiling C++ object MistInHLS.p/src_io.cpp.o
+[488/813] Compiling C++ object MistInHLS.p/src_input_input.cpp.o
+[489/813] Compiling C++ object MistInDTSC.p/src_input_mist_in.cpp.o
+[490/813] Compiling C++ object MistInHLS.p/src_input_input_hls.cpp.o
+[491/813] Compiling C++ object MistInDTSC.p/src_input_input_dtsc.cpp.o
+[492/813] Linking target MistInHLS
+[493/813] Compiling C++ object MistInDTSC.p/src_input_input.cpp.o
+[494/813] Compiling C++ object MistInMP3.p/src_input_mist_in.cpp.o
+[495/813] Compiling C++ object MistInDTSC.p/src_io.cpp.o
+[496/813] Linking target MistInDTSC
+[497/813] Compiling C++ object MistInMP3.p/src_input_input_mp3.cpp.o
+[498/813] Compiling C++ object MistInMP3.p/src_io.cpp.o
+[499/813] Compiling C++ object MistInFLV.p/src_input_mist_in.cpp.o
+[500/813] Compiling C++ object MistInMP3.p/src_input_input.cpp.o
+[501/813] Linking target MistInMP3
+[502/813] Compiling C++ object MistInFLV.p/src_input_input_flv.cpp.o
+[503/813] Compiling C++ object MistInFLV.p/src_io.cpp.o
+[504/813] Compiling C++ object MistInOGG.p/src_input_mist_in.cpp.o
+[505/813] Compiling C++ object MistInFLV.p/src_input_input.cpp.o
+[506/813] Linking target MistInFLV
+[507/813] Compiling C++ object MistInOGG.p/src_input_input_ogg.cpp.o
+[508/813] Compiling C++ object MistInOGG.p/src_io.cpp.o
+[509/813] Compiling C++ object MistInOGG.p/src_input_input.cpp.o
+[510/813] Compiling C++ object MistInBuffer.p/src_input_mist_in.cpp.o
+[511/813] Linking target MistInOGG
+[512/813] Compiling C++ object MistInBuffer.p/src_io.cpp.o
+[513/813] Compiling C++ object MistInBuffer.p/src_input_input.cpp.o
+[514/813] Compiling C++ object MistInBuffer.p/src_input_input_buffer.cpp.o
+[515/813] Compiling C++ object MistInH264.p/src_input_mist_in.cpp.o
+[516/813] Linking target MistInBuffer
+[517/813] Compiling C++ object MistInH264.p/src_input_input_h264.cpp.o
+[518/813] Compiling C++ object MistInH264.p/src_io.cpp.o
+[519/813] Compiling C++ object MistInH264.p/src_input_input.cpp.o
+[520/813] Compiling C++ object MistInEBML.p/src_input_mist_in.cpp.o
+[521/813] Linking target MistInH264
+[522/813] Compiling C++ object MistInEBML.p/src_input_input_ebml.cpp.o
+[523/813] Compiling C++ object MistInEBML.p/src_io.cpp.o
+[524/813] Compiling C++ object MistInEBML.p/src_input_input.cpp.o
+[525/813] Linking target MistInEBML
+[526/813] Compiling C++ object MistInISMV.p/src_input_mist_in.cpp.o
+[527/813] Compiling C++ object MistInISMV.p/src_io.cpp.o
+[528/813] Compiling C++ object MistInISMV.p/src_input_input.cpp.o
+[529/813] Compiling C++ object MistInISMV.p/src_input_input_ismv.cpp.o
+[530/813] Linking target MistInISMV
+[531/813] Compiling C++ object MistInMP4.p/src_input_mist_in.cpp.o
+[532/813] Compiling C++ object MistInMP4.p/src_io.cpp.o
+[533/813] Compiling C++ object MistInMP4.p/src_input_input_mp4.cpp.o
+[534/813] Compiling C++ object MistInMP4.p/src_input_input.cpp.o
+[535/813] Compiling C++ object MistInTS.p/src_input_mist_in.cpp.o
+[536/813] Linking target MistInMP4
+[537/813] Compiling C++ object MistInTS.p/src_io.cpp.o
+[538/813] Compiling C++ object MistInTS.p/src_input_input.cpp.o
+[539/813] Compiling C++ object MistInFolder.p/src_input_mist_in.cpp.o
+[540/813] Compiling C++ object MistInTS.p/src_input_input_ts.cpp.o
+[541/813] Linking target MistInTS
+[542/813] Compiling C++ object MistInFolder.p/src_input_input_folder.cpp.o
+[543/813] Compiling C++ object MistInFolder.p/src_io.cpp.o
+[544/813] Compiling C++ object MistInPlaylist.p/src_input_mist_in.cpp.o
+[545/813] Compiling C++ object MistInFolder.p/src_input_input.cpp.o
+[546/813] Linking target MistInFolder
+[547/813] Compiling C++ object MistInPlaylist.p/src_input_input_playlist.cpp.o
+[548/813] Compiling C++ object MistInPlaylist.p/src_io.cpp.o
+[549/813] Compiling C++ object MistInPlaylist.p/src_input_input.cpp.o
+[550/813] Compiling C++ object MistInBalancer.p/src_input_mist_in.cpp.o
+[551/813] Linking target MistInPlaylist
+[552/813] Compiling C++ object MistInBalancer.p/src_input_input_balancer.cpp.o
+[553/813] Compiling C++ object MistInBalancer.p/src_io.cpp.o
+[554/813] Compiling C++ object MistInBalancer.p/src_input_input.cpp.o
+[555/813] Compiling C++ object MistInRTSP.p/src_input_mist_in.cpp.o
+[556/813] Linking target MistInBalancer
+[557/813] Compiling C++ object MistInRTSP.p/src_io.cpp.o
+[558/813] Compiling C++ object MistInRTSP.p/src_input_input_rtsp.cpp.o
+[559/813] Compiling C++ object MistInRTSP.p/src_input_input.cpp.o
+[560/813] Compiling C++ object MistInSubRip.p/src_input_mist_in.cpp.o
+[561/813] Linking target MistInRTSP
+[562/813] Compiling C++ object MistInSubRip.p/src_input_input_subrip.cpp.o
+[563/813] Compiling C++ object MistInSubRip.p/src_io.cpp.o
+[564/813] Compiling C++ object MistInSubRip.p/src_input_input.cpp.o
+[565/813] Compiling C++ object MistInSDP.p/src_input_mist_in.cpp.o
+[566/813] Linking target MistInSubRip
+[567/813] Compiling C++ object MistInSDP.p/src_input_input.cpp.o
+[568/813] Compiling C++ object MistInSDP.p/src_io.cpp.o
+[569/813] Compiling C++ object MistInSDP.p/src_input_input_sdp.cpp.o
+[570/813] Compiling C++ object MistInAAC.p/src_input_mist_in.cpp.o
+[571/813] Linking target MistInSDP
+[572/813] Compiling C++ object MistInAAC.p/src_input_input_aac.cpp.o
+[573/813] Compiling C++ object MistInAAC.p/src_io.cpp.o
+[574/813] Compiling C++ object MistInFLAC.p/src_input_mist_in.cpp.o
+[575/813] Compiling C++ object MistInAAC.p/src_input_input.cpp.o
+[576/813] Linking target MistInAAC
+[577/813] Compiling C++ object MistInFLAC.p/src_input_input_flac.cpp.o
+[578/813] Compiling C++ object MistInFLAC.p/src_io.cpp.o
+[579/813] Compiling C++ object MistInFLAC.p/src_input_input.cpp.o
+[580/813] Compiling C++ object MistInTSSRT.p/src_input_mist_in.cpp.o
+[581/813] Linking target MistInFLAC
+[582/813] Compiling C++ object MistInTSSRT.p/src_io.cpp.o
+[583/813] Compiling C++ object MistInTSSRT.p/src_input_input_tssrt.cpp.o
+[584/813] Compiling C++ object MistInTSSRT.p/src_input_input.cpp.o
+[585/813] Compiling C++ object MistInV4L2.p/src_input_mist_in.cpp.o
+[586/813] Linking target MistInTSSRT
+[587/813] Compiling C++ object MistInV4L2.p/src_input_input_v4l2.cpp.o
+[588/813] Compiling C++ object MistInV4L2.p/src_io.cpp.o
+[589/813] Compiling C++ object MistInV4L2.p/src_input_input.cpp.o
+[590/813] Linking target MistInV4L2
+[591/813] Compiling C++ object MistOutRTMP.p/src_io.cpp.o
+[592/813] Compiling C++ object MistOutRTMP.p/src_output_mist_out.cpp.o
+[593/813] Compiling C++ object MistOutRTMP.p/src_output_output_rtmp.cpp.o
+[594/813] Compiling C++ object MistOutRTMP.p/src_output_output.cpp.o
+[595/813] Linking target MistOutRTMP
+[596/813] Compiling C++ object MistOutDTSC.p/src_output_output_dtsc.cpp.o
+[597/813] Compiling C++ object MistOutDTSC.p/src_io.cpp.o
+[598/813] Compiling C++ object MistOutDTSC.p/src_output_mist_out.cpp.o
+[599/813] Compiling C++ object MistOutDTSC.p/src_output_output.cpp.o
+[600/813] Linking target MistOutDTSC
+[601/813] Compiling C++ object MistOutOGG.p/src_output_output_ogg.cpp.o
+[602/813] Compiling C++ object MistOutOGG.p/src_io.cpp.o
+[603/813] Compiling C++ object MistOutOGG.p/src_output_output.cpp.o
+[604/813] Compiling C++ object MistOutOGG.p/src_output_mist_out.cpp.o
+[605/813] Compiling C++ object MistOutFLV.p/src_output_output_flv.cpp.o
+[606/813] Compiling C++ object MistOutOGG.p/src_output_output_http.cpp.o
+[607/813] Linking target MistOutOGG
+[608/813] Compiling C++ object MistOutFLV.p/src_io.cpp.o
+[609/813] Compiling C++ object MistOutFLV.p/src_output_output.cpp.o
+[610/813] Compiling C++ object MistOutFLV.p/src_output_mist_out.cpp.o
+[611/813] Compiling C++ object MistOutHTTPMinimalServer.p/src_output_output_http_minimalserver.cpp.o
+[612/813] Compiling C++ object MistOutFLV.p/src_output_output_http.cpp.o
+[613/813] Linking target MistOutFLV
+[614/813] Compiling C++ object MistOutHTTPMinimalServer.p/src_io.cpp.o
+[615/813] Compiling C++ object MistOutHTTPMinimalServer.p/src_output_mist_out.cpp.o
+[616/813] Compiling C++ object MistOutHTTPMinimalServer.p/src_output_output.cpp.o
+[617/813] Compiling C++ object MistOutHTTPMinimalServer.p/src_output_output_http.cpp.o
+[618/813] Linking target MistOutHTTPMinimalServer
+[619/813] Compiling C++ object MistOutMP4.p/src_output_output_mp4.cpp.o
+[620/813] Compiling C++ object MistOutMP4.p/src_io.cpp.o
+[621/813] Compiling C++ object MistOutMP4.p/src_output_output.cpp.o
+[622/813] Compiling C++ object MistOutMP4.p/src_output_mist_out.cpp.o
+[623/813] Compiling C++ object MistOutAAC.p/src_output_output_aac.cpp.o
+[624/813] Compiling C++ object MistOutMP4.p/src_output_output_http.cpp.o
+[625/813] Linking target MistOutMP4
+[626/813] Compiling C++ object MistOutAAC.p/src_io.cpp.o
+[627/813] Compiling C++ object MistOutAAC.p/src_output_mist_out.cpp.o
+[628/813] Compiling C++ object MistOutAAC.p/src_output_output.cpp.o
+[629/813] Compiling C++ object MistOutFLAC.p/src_output_output_flac.cpp.o
+[630/813] Compiling C++ object MistOutAAC.p/src_output_output_http.cpp.o
+[631/813] Linking target MistOutAAC
+[632/813] Compiling C++ object MistOutFLAC.p/src_io.cpp.o
+[633/813] Compiling C++ object MistOutFLAC.p/src_output_mist_out.cpp.o
+[634/813] Compiling C++ object MistOutFLAC.p/src_output_output.cpp.o
+[635/813] Compiling C++ object MistOutFLAC.p/src_output_output_http.cpp.o
+[636/813] Compiling C++ object MistOutMP3.p/src_output_output_mp3.cpp.o
+[637/813] Linking target MistOutFLAC
+[638/813] Compiling C++ object MistOutMP3.p/src_io.cpp.o
+[639/813] Compiling C++ object MistOutMP3.p/src_output_mist_out.cpp.o
+[640/813] Compiling C++ object MistOutMP3.p/src_output_output.cpp.o
+[641/813] Compiling C++ object MistOutMP3.p/src_output_output_http.cpp.o
+[642/813] Compiling C++ object MistOutH264.p/src_output_output_h264.cpp.o
+[643/813] Linking target MistOutMP3
+[644/813] Compiling C++ object MistOutH264.p/src_output_mist_out.cpp.o
+[645/813] Compiling C++ object MistOutH264.p/src_output_output.cpp.o
+[646/813] Compiling C++ object MistOutH264.p/src_io.cpp.o
+[647/813] Compiling C++ object MistOutHDS.p/src_output_output_hds.cpp.o
+[648/813] Compiling C++ object MistOutH264.p/src_output_output_http.cpp.o
+[649/813] Linking target MistOutH264
+[650/813] Compiling C++ object MistOutHDS.p/src_io.cpp.o
+[651/813] Compiling C++ object MistOutHDS.p/src_output_mist_out.cpp.o
+[652/813] Compiling C++ object MistOutHDS.p/src_output_output.cpp.o
+[653/813] Compiling C++ object MistOutSubRip.p/src_output_output_srt.cpp.o
+[654/813] Compiling C++ object MistOutHDS.p/src_output_output_http.cpp.o
+[655/813] Linking target MistOutHDS
+[656/813] Compiling C++ object MistOutSubRip.p/src_io.cpp.o
+[657/813] Compiling C++ object MistOutSubRip.p/src_output_mist_out.cpp.o
+[658/813] Compiling C++ object MistOutSubRip.p/src_output_output.cpp.o
+[659/813] Compiling C++ object MistOutJSON.p/src_output_output_json.cpp.o
+[660/813] Compiling C++ object MistOutSubRip.p/src_output_output_http.cpp.o
+[661/813] Linking target MistOutSubRip
+[662/813] Compiling C++ object MistOutJSON.p/src_io.cpp.o
+[663/813] Compiling C++ object MistOutJSON.p/src_output_mist_out.cpp.o
+[664/813] Compiling C++ object MistOutJSON.p/src_output_output.cpp.o
+[665/813] Compiling C++ object MistOutJSON.p/src_output_output_http.cpp.o
+[666/813] Compiling C++ object MistOutTS.p/src_output_output_ts.cpp.o
+[667/813] Linking target MistOutJSON
+[668/813] Compiling C++ object MistOutTS.p/src_io.cpp.o
+[669/813] Compiling C++ object MistOutTS.p/src_output_output.cpp.o
+[670/813] Compiling C++ object MistOutTS.p/src_output_mist_out.cpp.o
+[671/813] Compiling C++ object MistOutTS.p/src_output_output_ts_base.cpp.o
+[672/813] Compiling C++ object MistOutHTTPTS.p/src_output_output_httpts.cpp.o
+[673/813] Linking target MistOutTS
+[674/813] Compiling C++ object MistOutHTTPTS.p/src_io.cpp.o
+[675/813] Compiling C++ object MistOutHTTPTS.p/src_output_mist_out.cpp.o
+[676/813] Compiling C++ object MistOutHTTPTS.p/src_output_output.cpp.o
+[677/813] Compiling C++ object MistOutHTTPTS.p/src_output_output_ts_base.cpp.o
+[678/813] Compiling C++ object MistOutHTTPTS.p/src_output_output_http.cpp.o
+[679/813] Linking target MistOutHTTPTS
+[680/813] Compiling C++ object MistOutHLS.p/src_output_output_hls.cpp.o
+[681/813] Compiling C++ object MistOutHLS.p/src_io.cpp.o
+[682/813] Compiling C++ object MistOutHLS.p/src_output_output.cpp.o
+[683/813] Compiling C++ object MistOutHLS.p/src_output_mist_out.cpp.o
+[684/813] Compiling C++ object MistOutHLS.p/src_output_output_ts_base.cpp.o
+[685/813] Compiling C++ object MistOutHLS.p/src_output_output_http.cpp.o
+[686/813] Linking target MistOutHLS
+[687/813] Compiling C++ object MistOutCMAF.p/src_output_output_cmaf.cpp.o
+[688/813] Compiling C++ object MistOutCMAF.p/src_io.cpp.o
+[689/813] Compiling C++ object MistOutCMAF.p/src_output_mist_out.cpp.o
+[690/813] Compiling C++ object MistOutCMAF.p/src_output_output.cpp.o
+[691/813] Compiling C++ object MistOutEBML.p/src_output_output_ebml.cpp.o
+[692/813] Compiling C++ object MistOutCMAF.p/src_output_output_http.cpp.o
+[693/813] Linking target MistOutCMAF
+[694/813] Compiling C++ object MistOutEBML.p/src_io.cpp.o
+[695/813] Compiling C++ object MistOutEBML.p/src_output_mist_out.cpp.o
+[696/813] Compiling C++ object MistOutEBML.p/src_output_output.cpp.o
+[697/813] Compiling C++ object MistOutEBML.p/src_output_output_http.cpp.o
+[698/813] Linking target MistOutEBML
+[699/813] Compiling C++ object MistOutRTSP.p/src_output_output_rtsp.cpp.o
+[700/813] Compiling C++ object MistOutRTSP.p/src_io.cpp.o
+[701/813] Compiling C++ object MistOutRTSP.p/src_output_output.cpp.o
+[702/813] Compiling C++ object MistOutRTSP.p/src_output_mist_out.cpp.o
+[703/813] Linking target MistOutRTSP
+[704/813] Compiling C++ object MistOutWAV.p/src_output_output_wav.cpp.o
+[705/813] Compiling C++ object MistOutWAV.p/src_output_mist_out.cpp.o
+[706/813] Compiling C++ object MistOutWAV.p/src_io.cpp.o
+[707/813] Compiling C++ object MistOutWAV.p/src_output_output.cpp.o
+[708/813] Compiling C++ object MistOutWAV.p/src_output_output_http.cpp.o
+[709/813] Linking target MistOutWAV
+[710/813] Compiling C++ object MistOutSDP.p/src_output_output_sdp.cpp.o
+[711/813] Compiling C++ object MistOutSDP.p/src_io.cpp.o
+[712/813] Compiling C++ object MistOutSDP.p/src_output_output.cpp.o
+[713/813] Compiling C++ object MistOutSDP.p/src_output_mist_out.cpp.o
+[714/813] Compiling C++ object MistOutSDP.p/src_output_output_http.cpp.o
+[715/813] Linking target MistOutSDP
+[716/813] Compiling C++ object MistOutHTTP.p/src_output_output_http_internal.cpp.o
+[717/813] Compiling C++ object MistOutHTTP.p/src_output_output.cpp.o
+[718/813] Compiling C++ object MistOutHTTP.p/src_io.cpp.o
+[719/813] Compiling C++ object MistOutHTTP.p/src_output_mist_out.cpp.o
+[720/813] Compiling C++ object MistOutJSONLine.p/src_output_output_jsonline.cpp.o
+[721/813] Compiling C++ object MistOutHTTP.p/src_output_output_http.cpp.o
+[722/813] Linking target MistOutHTTP
+[723/813] Compiling C++ object MistOutJSONLine.p/src_io.cpp.o
+[724/813] Compiling C++ object MistOutJSONLine.p/src_output_mist_out.cpp.o
+[725/813] Compiling C++ object MistOutJSONLine.p/src_output_output.cpp.o
+[726/813] Linking target MistOutJSONLine
+[727/813] Compiling C++ object MistOutJPG.p/src_output_output_jpg.cpp.o
+[728/813] Compiling C++ object MistOutJPG.p/src_io.cpp.o
+[729/813] Compiling C++ object MistOutJPG.p/src_output_mist_out.cpp.o
+[730/813] Compiling C++ object MistOutJPG.p/src_output_output.cpp.o
+[731/813] Compiling C++ object MistOutJPG.p/src_output_output_http.cpp.o
+[732/813] Compiling C++ object MistOutHTTPS.p/src_output_output_https.cpp.o
+[733/813] Linking target MistOutJPG
+[734/813] Compiling C++ object MistOutHTTPS.p/src_io.cpp.o
+[735/813] Compiling C++ object MistOutHTTPS.p/src_output_mist_out.cpp.o
+[736/813] Compiling C++ object MistOutHTTPS.p/src_output_output.cpp.o
+[737/813] Linking target MistOutHTTPS
+[738/813] Compiling C++ object MistOutWebRTC.p/src_io.cpp.o
+[739/813] Compiling C++ object MistOutWebRTC.p/src_output_output.cpp.o
+[740/813] Compiling C++ object MistOutWebRTC.p/src_output_mist_out.cpp.o
+[741/813] Compiling C++ object MistOutWebRTC.p/src_output_output_webrtc_srtp.cpp.o
+[742/813] Compiling C++ object MistOutWebRTC.p/src_output_output_webrtc.cpp.o
+[743/813] Compiling C++ object MistOutWebRTC.p/src_output_output_http.cpp.o
+[744/813] Linking target MistOutWebRTC
+[745/813] Compiling C++ object MistOutTSSRT.p/src_output_output_tssrt.cpp.o
+[746/813] Compiling C++ object MistOutTSSRT.p/src_io.cpp.o
+[747/813] Compiling C++ object MistOutTSSRT.p/src_output_output.cpp.o
+[748/813] Compiling C++ object MistOutTSSRT.p/src_output_mist_out.cpp.o
+[749/813] Compiling C++ object MistOutTSSRT.p/src_output_output_ts_base.cpp.o
+[750/813] Linking target MistOutTSSRT
+[751/813] Compiling C++ object MistProcFFMPEG.p/src_process_process_ffmpeg.cpp.o
+[752/813] Compiling C++ object MistProcMKVExec.p/src_process_process_exec.cpp.o
+[753/813] Linking target MistProcMKVExec
+[754/813] Linking target MistProcFFMPEG
+[755/813] Compiling C++ object MistProcLivepeer.p/src_process_process_livepeer.cpp.o
+[756/813] Compiling C++ object MistProcLivepeer.p/src_output_output_http.cpp.o
+[757/813] Compiling C++ object MistProcLivepeer.p/src_input_input.cpp.o
+[758/813] Compiling C++ object MistProcLivepeer.p/src_output_output_ts_base.cpp.o
+[759/813] Compiling C++ object MistProcLivepeer.p/src_io.cpp.o
+[760/813] Compiling C++ object MistProcComposer.p/src_io.cpp.o
+[761/813] Compiling C++ object MistProcLivepeer.p/src_output_output.cpp.o
+[762/813] Compiling C++ object MistProcComposer.p/src_process_process_composer.cpp.o
+[763/813] Linking target MistProcLivepeer
+[764/813] Compiling C++ object MistController.p/src_controller_controller.cpp.o
+[765/813] Compiling C++ object MistProcComposer.p/src_input_input.cpp.o
+[766/813] Compiling C++ object MistController.p/src_controller_controller_external_writers.cpp.o
+[767/813] Compiling C++ object MistController.p/src_controller_controller_updater.cpp.o
+[768/813] Compiling C++ object MistProcComposer.p/src_output_output.cpp.o
+[769/813] Linking target MistProcComposer
+[770/813] Compiling C++ object MistController.p/src_controller_controller_streams.cpp.o
+[771/813] Compiling C++ object MistController.p/src_controller_controller_storage.cpp.o
+[772/813] Compiling C++ object MistController.p/src_controller_controller_connectors.cpp.o
+[773/813] Compiling C++ object MistController.p/src_controller_controller_uplink.cpp.o
+[774/813] Compiling C++ object MistController.p/src_controller_controller_capabilities.cpp.o
+[775/813] Compiling C++ object MistController.p/src_controller_controller_statistics.cpp.o
+[776/813] Compiling C++ object MistController.p/src_controller_controller_push.cpp.o
+[777/813] Compiling C++ object MistController.p/src_controller_controller_variables.cpp.o
+[778/813] Compiling C++ object MistController.p/src_controller_controller_api.cpp.o
+[779/813] Compiling C++ object test/convertertest.p/converter.cpp.o
+[780/813] Compiling C++ object MistSession.p/src_session.cpp.o
+[781/813] Linking target test/convertertest
+[782/813] Linking target MistController
+[783/813] Linking target MistSession
+[784/813] Compiling C++ object test/streamstatustest.p/status.cpp.o
+[785/813] Compiling C++ object test/resolvetest.p/resolve.cpp.o
+[786/813] Linking target test/streamstatustest
+[787/813] Compiling C++ object test/urireadertest.p/urireader.cpp.o
+[788/813] Linking target test/resolvetest
+[789/813] Linking target test/urireadertest
+[790/813] Compiling C++ object test/websockettest.p/websocket.cpp.o
+[791/813] Compiling C++ object test/jwttest.p/jwt.cpp.o
+[792/813] Linking target test/websockettest
+[793/813] Compiling C++ object test/downloadertest.p/downloader.cpp.o
+[794/813] Linking target test/jwttest
+[795/813] Linking target test/downloadertest
+[796/813] Compiling C++ object test/proctest.p/procs.cpp.o
+[797/813] Compiling C++ object test/shellsplittest.p/shellsplit.cpp.o
+[798/813] Compiling C++ object test/sockbuftest.p/socketbuffer.cpp.o
+[799/813] Linking target test/proctest
+[800/813] Linking target test/shellsplittest
+[801/813] Linking target test/sockbuftest
+[802/813] Compiling C++ object test/urltest.p/url.cpp.o
+[803/813] Linking target test/urltest
+[804/813] Compiling C++ object test/dtsc_sizing_test.p/dtsc_sizing.cpp.o
+[805/813] Compiling C++ object test/jsontest.p/json.cpp.o
+[806/813] Linking target test/dtsc_sizing_test
+[807/813] Compiling C++ object test/bitwritertest.p/bitwriter.cpp.o
+[808/813] Linking target test/jsontest
+[809/813] Linking target test/bitwritertest
+[810/813] Compiling C++ object test/httpparsertest.p/http_parser.cpp.o
+[811/813] Linking target test/httpparsertest
+[812/813] Compiling C++ object test/amftest.p/amf.cpp.o
+[813/813] Linking target test/amftest

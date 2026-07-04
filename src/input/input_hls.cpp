@@ -739,7 +739,7 @@ namespace Mist{
     meta.setUTCOffset(zUTC, UTCSRC_PROTOCOL);
     // Only apply a source-derived offset when the source actually carried an
     // EXT-X-PROGRAM-DATE-TIME (zUTC != 0). Without one, leave bootMsOffset alone so
-    // getNext() can anchor the live media clock to real wall-clock arrival time.
+    // parseSegmentAsLive() can anchor the live media clock to real wall-clock time.
     // Forcing streamOffset (which is 0 here) would map media-time-zero onto the
     // server boot time and back-date catchup PROGRAM-DATE-TIME on every restart.
     if (zUTC && M.getLive()){meta.setBootMsOffset(streamOffset);}
@@ -837,8 +837,8 @@ namespace Mist{
     // set bootMsOffset in order to display the program time correctly in the player
     meta.setUTCOffset(zUTC, UTCSRC_PROTOCOL);
     // Only anchor from a source EXT-X-PROGRAM-DATE-TIME here (zUTC != 0). If the
-    // source has none, getNext() anchors the live clock to real arrival time; see
-    // the note there.
+    // source has none, parseSegmentAsLive() anchors the live clock to real arrival
+    // time; see the note there.
     if (zUTC && M.getLive()){meta.setBootMsOffset(streamOffset);}
 
     injectLocalVars();
@@ -950,6 +950,19 @@ namespace Mist{
       headerPack.getString("data", data, dataLen);
       // keyframe data exists, so always add 19 bytes keyframedata.
       uint32_t packOffset = headerPack.hasMember("offset") ? headerPack.getInt("offset") : 0;
+      // If the source carried no EXT-X-PROGRAM-DATE-TIME (no UTC offset), anchor the
+      // live media clock to real wall-clock time using the newest (live-edge)
+      // segment, so this freshly-published segment maps to ~now. Without this,
+      // bootMsOffset stays 0, the media clock is interpreted relative to the server
+      // boot time, and the recorded catchup EXT-X-PROGRAM-DATE-TIME is back-dated by
+      // boot-to-now (potentially days). Anchoring on the live-edge segment (rather
+      // than any burst segment) keeps it accurate even on a cold start, and fires
+      // promptly on every reconnect for flaky pull sources. Mirrors
+      // input_ts/input_tssrt/input_rtsp; the !getBootMsOffset() guard sets it once.
+      if ((segmentIndex + 1 >= curList.size()) && M.getLive() && !M.getUTCOffset() && !M.getBootMsOffset()){
+        meta.setBootMsOffset((int64_t)Util::bootMS() - (int64_t)packetTime);
+        INFO_MSG("Anchored live UTC: no source PROGRAM-DATE-TIME, mapped media %" PRIu64 "ms to wall-clock (bootMsOffset=%" PRId64 ")", packetTime, (int64_t)M.getBootMsOffset());
+      }
       VERYHIGH_MSG("Adding packet (%zuB) at timestamp %" PRIu64 " -> %" PRIu64 " with an offset of %" PRIu32 " on track %zu", dataLen, headerPack.getTime(), packetTime, packOffset, idx);
       bufferLivePacket(packetTime, packOffset, idx, data, dataLen, curList.at(segmentIndex).bytePos, headerPack.hasMember("keyframe"));
       if (isInitialRun){
@@ -1087,15 +1100,6 @@ namespace Mist{
           Bit::htobl(thisPacket.getData() + 8, tid);
           Bit::htobll(thisPacket.getData() + 12, packetTime);
           thisTime = packetTime;
-          // If the source carried no EXT-X-PROGRAM-DATE-TIME (no UTC offset), anchor
-          // the live media clock to real wall-clock arrival time here, mirroring
-          // input_ts/input_tssrt/input_rtsp. Without this, bootMsOffset stays 0,
-          // media-time-zero maps onto the server boot time, and catchup
-          // PROGRAM-DATE-TIME back-dates and resets to the boot instant on every
-          // input restart. Set once (guarded by !getBootMsOffset()).
-          if (M.getLive() && !M.getUTCOffset() && !M.getBootMsOffset()){
-            meta.setBootMsOffset((int64_t)Util::bootMS() - (int64_t)packetTime);
-          }
           return; // Success!
         }
         continue;
