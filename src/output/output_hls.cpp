@@ -212,7 +212,10 @@ namespace Mist{
     capa["exceptions"]["codec:MP3"] = JSON::fromString(
         "[[\"blacklist\",[\"Mozilla/"
         "\"]],[\"whitelist\",[\"iPad\",\"iPhone\",\"iPod\",\"MacIntel\",\"Edge\"]]]");
-    capa["exceptions"]["codec:HEVC"] = JSON::fromString("[[\"blacklist\"]]");
+    // HEVC-in-MPEG-TS HLS is unplayable on Apple/desktop browsers but IS supported by Roku
+    // (and set-top boxes). Blacklist it only for browsers, so auto-selection still steers
+    // Apple/browser clients to CMAF, while Roku and direct /hls requests get HEVC-in-TS.
+    capa["exceptions"]["codec:HEVC"] = JSON::fromString("[[\"blacklist\",[\"Mozilla/\"]]]");
 
     cfg->addOption(
         "listlimit",

@@ -51,7 +51,11 @@ std::string Util::codecString(const std::string &codec, const std::string &initD
   }
   if (codec == "HEVC"){
     std::stringstream r;
-    r << "hev1";
+    // Use "hvc1" (parameter sets in the init/sample-description) rather than "hev1"
+    // (in-band params). MistServer's fMP4/CMAF init segments carry the VPS/SPS/PPS in
+    // the sample description (hvc1), so the manifest CODECS string must match, or strict
+    // clients (Roku, Apple) fail to configure the HEVC decoder.
+    r << "hvc1";
     if (!initData.size()){return r.str();}
     h265::initData init(initData);
     h265::metaInfo mInfo = init.getMeta();
