@@ -61,6 +61,8 @@ namespace Mist{
 
     void generateSegmentlist(size_t idx, std::stringstream &s,
                              void callBack(uint64_t, uint64_t, std::stringstream &, bool));
+    /// Parse startunix/start/stopunix/stop/duration request vars into media-time window bounds (0 = unset)
+    void getRequestedWindowMs(uint64_t &startMs, uint64_t &stopMs);
     bool tracksAligned(const std::set<size_t> &trackList);
     std::string buildNalUnit(size_t len, const char *data);
     uint64_t targetTime;

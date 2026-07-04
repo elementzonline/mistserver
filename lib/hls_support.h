@@ -34,6 +34,8 @@ namespace HLS{
     std::string urlPrefix;      ///< for CDN chunk serving
     uint64_t systemBoot;        ///< duration in ms since boot
     int64_t bootMsOffset;       ///< time diff between systemBoot & stream's 0 time in ms
+    uint64_t windowStartMs;     ///< If nonzero, media manifest window starts at/after this media time (deep DVR seek)
+    uint64_t windowStopMs;      ///< If nonzero, media manifest window ends at/before this media time
   };
 
   /// A struct containing http variable data for LLHLS, can be empty strings

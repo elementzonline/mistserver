@@ -247,9 +247,45 @@ namespace Mist{
     H.SendResponse("200", "OK", myConn);
   }
 
+  /// Parse startunix/start/stopunix/stop/duration request vars into media-time window bounds.
+  /// Mirrors the unix->media-time conversion used for playback seeking. 0 means unset.
+  /// Lets a bounded (small) manifest be served from any point in a multi-day recording.
+  void OutCMAF::getRequestedWindowMs(uint64_t &startMs, uint64_t &stopMs){
+    startMs = 0;
+    stopMs = 0;
+    uint64_t zUTC = M.getUTCOffset();
+    if (!zUTC && M.getLive()){
+      zUTC = M.getBootMsOffset() + Util::getGlobalConfig("systemBoot").asInt();
+    }
+    if (H.GetVar("startunix").size()){
+      int64_t su = atoll(H.GetVar("startunix").c_str()) * 1000;
+      // Values within the first 10 hours of the epoch are treated as relative-to-now
+      if (su <= 36000000){su += Util::unixMS();}
+      int64_t s = su - (int64_t)zUTC;
+      if (s > 0){startMs = (uint64_t)s;}
+    }else if (H.GetVar("start").size()){
+      int64_t s = atoll(H.GetVar("start").c_str());
+      if (s > 0){startMs = (uint64_t)s;}
+    }
+    if (H.GetVar("stopunix").size()){
+      int64_t su = atoll(H.GetVar("stopunix").c_str()) * 1000;
+      if (su <= 36000000){su += Util::unixMS();}
+      int64_t s = su - (int64_t)zUTC;
+      if (s > 0){stopMs = (uint64_t)s;}
+    }else if (H.GetVar("stop").size()){
+      int64_t s = atoll(H.GetVar("stop").c_str());
+      if (s > 0){stopMs = (uint64_t)s;}
+    }
+    if (!stopMs && startMs && H.GetVar("duration").size()){
+      stopMs = startMs + (uint64_t)(atoll(H.GetVar("duration").c_str()) * 1000);
+    }
+  }
+
   /// \brief Builds media playlist to (LL)HLS
   ///\return The media playlist file to (LL)HLS
   void OutCMAF::sendHlsMediaManifest(const size_t requestTid){
+    uint64_t windowStartMs = 0, windowStopMs = 0;
+    getRequestedWindowMs(windowStartMs, windowStopMs);
     const HLS::HlsSpecData hlsSpec ={H.GetVar("_HLS_skip"), H.GetVar("_HLS_msn"),
                                       H.GetVar("_HLS_part")};
 
@@ -281,6 +317,8 @@ namespace Mist{
         urlPrefix,
         systemBoot,
         bootMsOffset,
+        windowStartMs,
+        windowStopMs,
     };
 
     // Fragment & Key handlers
@@ -508,6 +546,24 @@ namespace Mist{
     bool first = true;
     // skip the first two fragments if live
     if (M.getLive() && (lastFragment - firstFragment) > 6){firstFragment += 2;}
+
+    // Deep-DVR bounded window: anchor the DASH segment list to the requested media-time range
+    // (startunix/start/stopunix/stop/duration) and/or cap it with listlimit, so a small manifest
+    // can be served from any point in a multi-day recording.
+    uint64_t wStartMs = 0, wStopMs = 0;
+    getRequestedWindowMs(wStartMs, wStopMs);
+    if (wStartMs){
+      uint32_t sFrag = M.getFragmentIndexForTime(mainTrack, wStartMs);
+      if (sFrag > firstFragment && sFrag < lastFragment){firstFragment = sFrag;}
+    }
+    if (wStopMs){
+      uint32_t eFrag = M.getFragmentIndexForTime(mainTrack, wStopMs);
+      if (eFrag >= firstFragment && eFrag < lastFragment){lastFragment = eFrag + 1;}
+    }
+    uint64_t dashListLimit = config->getInteger("listlimit");
+    if (dashListLimit && (lastFragment - firstFragment) > dashListLimit){
+      lastFragment = firstFragment + dashListLimit;
+    }
 
     DTSC::Keys keys(M.getKeys(mainTrack));
     for (; firstFragment < lastFragment; ++firstFragment){

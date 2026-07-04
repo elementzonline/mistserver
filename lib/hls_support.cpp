@@ -161,16 +161,33 @@ namespace HLS{
     fragData.duration = fragments.getDuration(fragData.currentFrag);
 
     // Playlist length limit logic:
-    // Part 1: Limit any playlist with listlimit config
-    if (trackData.listLimit &&
-        (fragData.lastFrag - fragData.currentFrag > trackData.listLimit + 2)){
-      fragData.currentFrag = fragData.lastFrag - trackData.listLimit;
-    }
+    if (trackData.windowStartMs || trackData.windowStopMs){
+      // Deep-DVR bounded window: anchor the manifest to the requested media-time range,
+      // so a small manifest can be served from any point in a multi-day recording.
+      if (trackData.windowStartMs){
+        uint32_t sFrag = M.getFragmentIndexForTime(trackData.timingTrackId, trackData.windowStartMs);
+        if (sFrag > fragData.currentFrag && sFrag <= fragData.lastFrag){fragData.currentFrag = sFrag;}
+      }
+      if (trackData.windowStopMs){
+        uint32_t eFrag = M.getFragmentIndexForTime(trackData.timingTrackId, trackData.windowStopMs);
+        if (eFrag >= fragData.currentFrag && eFrag < fragData.lastFrag){fragData.lastFrag = eFrag + 1;}
+      }
+      // Cap the anchored window forward by listlimit (if set) to keep the manifest bounded
+      if (trackData.listLimit && (fragData.lastFrag - fragData.currentFrag > trackData.listLimit)){
+        fragData.lastFrag = fragData.currentFrag + trackData.listLimit;
+      }
+    }else{
+      // Part 1: Limit any playlist with listlimit config (trims towards the live edge)
+      if (trackData.listLimit &&
+          (fragData.lastFrag - fragData.currentFrag > trackData.listLimit + 2)){
+        fragData.currentFrag = fragData.lastFrag - trackData.listLimit;
+      }
 
-    // Part 2: Limit a playlist depending on initial MSN data
-    // see the NOTE at HLS::getLiveLengthLimit(args)
-    if (trackData.isLive && (fragData.lastFrag - fragData.currentFrag) > 2){
-      fragData.currentFrag = std::max(trackData.initMsn, fragData.currentFrag + 2);
+      // Part 2: Limit a playlist depending on initial MSN data
+      // see the NOTE at HLS::getLiveLengthLimit(args)
+      if (trackData.isLive && (fragData.lastFrag - fragData.currentFrag) > 2){
+        fragData.currentFrag = std::max(trackData.initMsn, fragData.currentFrag + 2);
+      }
     }
   }
 
