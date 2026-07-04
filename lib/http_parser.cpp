@@ -773,6 +773,12 @@ void HTTP::parseVars(const std::string &data, std::map<std::string, std::string>
   }
 }
 
+std::string HTTP::flussonicShiftToStartunix(const std::string &shiftVal){
+  int64_t shiftSec = atoll(shiftVal.c_str());
+  if (shiftSec <= 0){return "";}
+  return "-" + JSON::Value(shiftSec).asString();
+}
+
 std::string HTTP::argStr(const std::map<std::string, std::string> & vars, bool withQuestionMark) {
   std::string ret;
   for (auto & it : vars) {

@@ -432,6 +432,13 @@ namespace Mist{
       HTTP_CONVERT("mintrackkeys");
       HTTP_CONVERT("maxwaittrackms");
 
+      // Flussonic compatibility: shift=N means N seconds behind live == startunix=-N.
+      // An explicit startunix/start always takes precedence over shift.
+      if (H.GetVar("shift") != "" && !targetParams.count("startunix") && !targetParams.count("start")){
+        std::string shiftUnix = HTTP::flussonicShiftToStartunix(H.GetVar("shift"));
+        if (shiftUnix.size()){targetParams["startunix"] = shiftUnix;}
+      }
+
       // allow setting of max lead time through buffer variable.
       // max lead time is set in MS, but the variable is in integer seconds for simplicity.
       if (H.GetVar("buffer") != ""){
