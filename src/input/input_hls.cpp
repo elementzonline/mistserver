@@ -737,7 +737,12 @@ namespace Mist{
     // Set bootMsOffset in order to display the program time correctly in the player
     zUTC = M.inputLocalVars["zUTC"].asInt();
     meta.setUTCOffset(zUTC, UTCSRC_PROTOCOL);
-    if (M.getLive()){meta.setBootMsOffset(streamOffset);}
+    // Only apply a source-derived offset when the source actually carried an
+    // EXT-X-PROGRAM-DATE-TIME (zUTC != 0). Without one, leave bootMsOffset alone so
+    // getNext() can anchor the live media clock to real wall-clock arrival time.
+    // Forcing streamOffset (which is 0 here) would map media-time-zero onto the
+    // server boot time and back-date catchup PROGRAM-DATE-TIME on every restart.
+    if (zUTC && M.getLive()){meta.setBootMsOffset(streamOffset);}
     return true;
   }
 
@@ -831,7 +836,10 @@ namespace Mist{
 
     // set bootMsOffset in order to display the program time correctly in the player
     meta.setUTCOffset(zUTC, UTCSRC_PROTOCOL);
-    if (M.getLive()){meta.setBootMsOffset(streamOffset);}
+    // Only anchor from a source EXT-X-PROGRAM-DATE-TIME here (zUTC != 0). If the
+    // source has none, getNext() anchors the live clock to real arrival time; see
+    // the note there.
+    if (zUTC && M.getLive()){meta.setBootMsOffset(streamOffset);}
 
     injectLocalVars();
     isInitialRun = true;
@@ -1079,6 +1087,15 @@ namespace Mist{
           Bit::htobl(thisPacket.getData() + 8, tid);
           Bit::htobll(thisPacket.getData() + 12, packetTime);
           thisTime = packetTime;
+          // If the source carried no EXT-X-PROGRAM-DATE-TIME (no UTC offset), anchor
+          // the live media clock to real wall-clock arrival time here, mirroring
+          // input_ts/input_tssrt/input_rtsp. Without this, bootMsOffset stays 0,
+          // media-time-zero maps onto the server boot time, and catchup
+          // PROGRAM-DATE-TIME back-dates and resets to the boot instant on every
+          // input restart. Set once (guarded by !getBootMsOffset()).
+          if (M.getLive() && !M.getUTCOffset() && !M.getBootMsOffset()){
+            meta.setBootMsOffset((int64_t)Util::bootMS() - (int64_t)packetTime);
+          }
           return; // Success!
         }
         continue;
