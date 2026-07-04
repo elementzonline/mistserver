@@ -66,6 +66,10 @@ namespace Mist{
     bool tracksAligned(const std::set<size_t> &trackList);
     std::string buildNalUnit(size_t len, const char *data);
     uint64_t targetTime;
+    /// Deep-DVR window bounds (media ms) captured from the request at onHTTP entry, where H is
+    /// still valid; used by the DASH generator whose H.url is reset to "/" by the time it runs.
+    uint64_t winStartMs;
+    uint64_t winStopMs;
 
     std::string h264init(const std::string &initData);
     std::string h265init(const std::string &initData);

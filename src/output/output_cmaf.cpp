@@ -373,6 +373,12 @@ namespace Mist{
       return;
     }
 
+    // Capture the requested deep-DVR window NOW, while H still holds the full request URL/query.
+    // The DASH generator (generateSegmentlist) runs later, by which point H.url is reset to "/".
+    winStartMs = 0;
+    winStopMs = 0;
+    getRequestedWindowMs(winStartMs, winStopMs);
+
     // Strip /cmaf/<streamname>/ from url
     std::string url = H.url.substr(H.url.find('/', 6) + 1);
     HTTP::URL req(reqUrl);
@@ -550,8 +556,7 @@ namespace Mist{
     // Deep-DVR bounded window: anchor the DASH segment list to the requested media-time range
     // (startunix/start/stopunix/stop/duration) and/or cap it with listlimit, so a small manifest
     // can be served from any point in a multi-day recording.
-    uint64_t wStartMs = 0, wStopMs = 0;
-    getRequestedWindowMs(wStartMs, wStopMs);
+    uint64_t wStartMs = winStartMs, wStopMs = winStopMs;
     if (wStartMs){
       uint32_t sFrag = M.getFragmentIndexForTime(mainTrack, wStartMs);
       if (sFrag > firstFragment && sFrag < lastFragment){firstFragment = sFrag;}
