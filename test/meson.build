@@ -219,6 +219,14 @@ test('Chunked HTTP response, lingering connection', httpparsertest, suite: 'HTTP
 amftest = executable('amftest', 'amf.cpp', header_tgts, dependencies: libmist_dep)
 test('AMF parser', amftest, suite: 'AMF parser', protocol:'tap')
 
+flussonicshifttest = executable('flussonicshifttest', 'flussonic_shift.cpp', header_tgts, dependencies: libmist_dep)
+test('Positive shift maps to negative startunix', flussonicshifttest, suite: 'Flussonic shift', env: {'T_SHIFT':'100', 'T_STARTUNIX':'-100'})
+test('Example bandwidth-style value', flussonicshifttest, suite: 'Flussonic shift', env: {'T_SHIFT':'2200', 'T_STARTUNIX':'-2200'})
+test('Zero shift is live edge', flussonicshifttest, suite: 'Flussonic shift', env: {'T_SHIFT':'0', 'T_STARTUNIX':''})
+test('Negative shift is live edge', flussonicshifttest, suite: 'Flussonic shift', env: {'T_SHIFT':'-5', 'T_STARTUNIX':''})
+test('Non-numeric shift is live edge', flussonicshifttest, suite: 'Flussonic shift', env: {'T_SHIFT':'abc', 'T_STARTUNIX':''})
+test('Empty shift is live edge', flussonicshifttest, suite: 'Flussonic shift', env: {'T_SHIFT':'', 'T_STARTUNIX':''})
+
 #abst_test = executable('abst_test', 'abst_test.cpp', dependencies: libmist_dep)
 #test('MP4::ABST Test', abst_test)
 
