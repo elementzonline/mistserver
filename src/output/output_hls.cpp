@@ -3,6 +3,8 @@
 #include <mist/langcodes.h> /*LTS*/
 #include <mist/stream.h>
 #include <mist/url.h>
+#include <mist/util.h>
+#include <cstdlib>
 #include <map>
 #include <unistd.h>
 
@@ -37,7 +39,8 @@ namespace Mist{
       if (audioId == INVALID_TRACK_ID && M.getType(it->first) == "audio"){audioId = it->first;}
       if (!hasSubs && M.getCodec(it->first) == "subtitle"){hasSubs = true;}
     }
-    std::string tknStr = HLSManifest::renditionQuery(tkn, Comms::tknMode & 0x04, targetParams);
+    std::string tknStr =
+        HLSManifest::renditionQuery(tkn, Comms::tknMode & 0x04, targetParams, Util::unixMS());
     for (std::map<size_t, Comms::Users>::iterator it = userSelect.begin(); it != userSelect.end(); ++it){
       if (M.getType(it->first) == "video"){
         ++vidTracks;
@@ -137,7 +140,10 @@ namespace Mist{
       segmentStarts.pop_back();
       segmentIndexes.pop_back();
       // skip the first two segments when live, unless that brings us under 4 target durations
-      while (durations.size() && (totalDuration - durations.front()) > (targetDuration * 4000) && skippedLines < 2){
+      while (HLSManifest::shouldSkipInitialLiveSegments(truthyTargetParam(targetParams, "noendlist"),
+                                                        targetParams.count("duration")) &&
+             durations.size() && (totalDuration - durations.front()) > (targetDuration * 4000) &&
+             skippedLines < 2){
         lines.pop_front();
         totalDuration -= durations.front();
         durations.pop_front();
@@ -431,6 +437,14 @@ namespace Mist{
       ts_from = from;
     }else{
       initialize();
+      if (truthyTargetParam(targetParams, "noendlist") &&
+          truthyTargetParam(targetParams, "hlswindow") && targetParams.count("start") &&
+          targetParams.count("duration") && targetParams.count("hlsanchor")){
+        targetParams["start"] = JSON::Value(HLSManifest::slidingWindowStart(
+                                    atoll(targetParams["start"].c_str()),
+                                    atoll(targetParams["hlsanchor"].c_str()), Util::unixMS()))
+                                    .asString();
+      }
       initialSeek(true);
       std::string request = H.url.substr(H.url.find("/", 5) + 1);
       H.setCORSHeaders();

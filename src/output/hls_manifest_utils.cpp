@@ -58,12 +58,14 @@ namespace Mist{
     }
 
     std::string renditionQuery(const std::string &token, bool includeToken,
-                               const std::map<std::string, std::string> &params){
+                               const std::map<std::string, std::string> &params,
+                               uint64_t liveWindowAnchorMs){
       std::string query;
       if (includeToken && token.size()){appendQueryParam(query, "tkn", token);}
 
       bool noEndList = truthyTargetParam(params, "noendlist");
       std::map<std::string, std::string>::const_iterator startIt = params.find("start");
+      bool hasStart = startIt != params.end();
       if (startIt != params.end()){
         appendQueryParam(query, "start", startIt->second);
       }else if (!noEndList){
@@ -88,8 +90,21 @@ namespace Mist{
         std::map<std::string, std::string>::const_iterator noEndIt = params.find("noendlist");
         if (noEndIt != params.end()){appendQueryParam(query, "noendlist", noEndIt->second);}
       }
+      if (noEndList && hasStart && durationIt != params.end() && liveWindowAnchorMs){
+        appendQueryParam(query, "hlswindow", "1");
+        appendQueryParam(query, "hlsanchor", std::to_string(liveWindowAnchorMs));
+      }
 
       return query;
+    }
+
+    uint64_t slidingWindowStart(uint64_t baseStart, uint64_t anchorUnixMs, uint64_t nowUnixMs){
+      if (!anchorUnixMs || nowUnixMs <= anchorUnixMs){return baseStart;}
+      return baseStart + (nowUnixMs - anchorUnixMs);
+    }
+
+    bool shouldSkipInitialLiveSegments(bool noEndList, bool hasDuration){
+      return !(noEndList && hasDuration);
     }
   }// namespace HLSManifest
 }// namespace Mist

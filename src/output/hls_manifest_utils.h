@@ -21,6 +21,11 @@ namespace Mist{
     bool shouldWriteEndList(bool isLive, uint64_t totalDuration, bool noEndList);
 
     std::string renditionQuery(const std::string &token, bool includeToken,
-                               const std::map<std::string, std::string> &params);
+                               const std::map<std::string, std::string> &params,
+                               uint64_t liveWindowAnchorMs = 0);
+
+    uint64_t slidingWindowStart(uint64_t baseStart, uint64_t anchorUnixMs, uint64_t nowUnixMs);
+
+    bool shouldSkipInitialLiveSegments(bool noEndList, bool hasDuration);
   }// namespace HLSManifest
 }// namespace Mist

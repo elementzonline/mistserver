@@ -52,5 +52,14 @@ int main(){
   assert(query == "?tkn=tok&start=123456&duration=60&noendlist=1");
   assert(query.find("startunix") == std::string::npos);
 
+  std::string slidingQuery =
+      Mist::HLSManifest::renditionQuery("tok", true, relativeUnixParams, 1234567890000ull);
+  assert(slidingQuery ==
+         "?tkn=tok&start=123456&duration=60&noendlist=1&hlswindow=1&hlsanchor=1234567890000");
+  assert(Mist::HLSManifest::slidingWindowStart(123456, 100000, 102500) == 125956);
+  assert(Mist::HLSManifest::slidingWindowStart(123456, 102500, 100000) == 123456);
+  assert(Mist::HLSManifest::shouldSkipInitialLiveSegments(false, false));
+  assert(!Mist::HLSManifest::shouldSkipInitialLiveSegments(true, true));
+
   return 0;
 }
