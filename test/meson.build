@@ -248,7 +248,7 @@ hls_track_pairing_test = executable(
   dependencies: libmist_dep,
 )
 test(
-  'HLS variants pair audio by timeline',
+  'HLS variants keep stable sibling audio pairs',
   hls_track_pairing_test,
   suite: 'HLS track pairing',
 )

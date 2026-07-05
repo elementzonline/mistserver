@@ -24,12 +24,17 @@ namespace Mist{
     result << "#EXTM3U\r\n";
     size_t audioId = INVALID_TRACK_ID;
     std::vector<HLSTrackTiming> audioTracks;
+    std::vector<HLSTrackTiming> videoTracks;
     size_t vidTracks = 0;
     bool hasSubs = false;
     for (std::map<size_t, Comms::Users>::iterator it = userSelect.begin(); it != userSelect.end(); ++it){
       if (M.getType(it->first) == "audio"){
         if (audioId == INVALID_TRACK_ID){audioId = it->first;}
         audioTracks.push_back(
+            HLSTrackTiming{it->first, M.getFirstms(it->first), M.getLastms(it->first), M.getID(it->first)});
+      }
+      if (M.getType(it->first) == "video"){
+        videoTracks.push_back(
             HLSTrackTiming{it->first, M.getFirstms(it->first), M.getLastms(it->first), M.getID(it->first)});
       }
       if (!hasSubs && M.getCodec(it->first) == "subtitle"){hasSubs = true;}
@@ -49,7 +54,7 @@ namespace Mist{
         ++vidTracks;
         const size_t pairedAudioId = selectHLSAudioTrack(
             HLSTrackTiming{it->first, M.getFirstms(it->first), M.getLastms(it->first), M.getID(it->first)},
-            audioTracks);
+            videoTracks, audioTracks);
         int bWidth = M.getBps(it->first);
         if (bWidth < 5){bWidth = 5;}
         if (pairedAudioId != INVALID_TRACK_ID){bWidth += M.getBps(pairedAudioId);}

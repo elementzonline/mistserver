@@ -20,7 +20,14 @@ namespace Mist{
   }
 
   inline size_t selectHLSAudioTrack(const HLSTrackTiming &video,
+                                    const std::vector<HLSTrackTiming> &videoTracks,
                                     const std::vector<HLSTrackTiming> &audioTracks){
+    if (videoTracks.size() == audioTracks.size() && !audioTracks.empty()){
+      for (size_t i = 0; i < videoTracks.size(); ++i){
+        if (videoTracks[i].trackId == video.trackId){return audioTracks[i].trackId;}
+      }
+    }
+
     size_t selected = INVALID_TRACK_ID;
     uint64_t bestTimelineDistance = std::numeric_limits<uint64_t>::max();
     uint64_t bestSourceDistance = std::numeric_limits<uint64_t>::max();
