@@ -16,8 +16,8 @@ namespace Mist{
     }
 
     void trimLiveWindow(std::deque<std::string> &lines, std::deque<uint64_t> &durations,
-                        uint32_t targetDuration, uint64_t listLimit, size_t &skippedLines,
-                        uint64_t &totalDuration){
+                        std::deque<uint64_t> &segmentStarts, uint32_t targetDuration,
+                        uint64_t listLimit, size_t &skippedLines, uint64_t &totalDuration){
       if (!listLimit){return;}
       uint64_t keepDuration = (uint64_t)targetDuration * 4000;
       while (lines.size() > listLimit && durations.size() &&
@@ -25,8 +25,14 @@ namespace Mist{
         lines.pop_front();
         totalDuration -= durations.front();
         durations.pop_front();
+        if (segmentStarts.size()){segmentStarts.pop_front();}
         ++skippedLines;
       }
+    }
+
+    uint64_t mediaSequence(uint64_t fragmentSequence, uint64_t firstSegmentStartTime, bool noEndList){
+      if (noEndList && firstSegmentStartTime){return firstSegmentStartTime;}
+      return fragmentSequence;
     }
 
     bool shouldWriteEndList(bool isLive, uint64_t totalDuration, bool noEndList){

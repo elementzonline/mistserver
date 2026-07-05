@@ -117,6 +117,7 @@ namespace Mist{
     // parse single track
     std::deque<std::string> lines;
     std::deque<uint64_t> durations;
+    std::deque<uint64_t> segmentStarts;
     uint64_t totalDuration = 0;
     DTSC::Keys keys(M.keys(timingTid));
     DTSC::Fragments fragments(M.fragments(timingTid));
@@ -142,6 +143,7 @@ namespace Mist{
       }
       totalDuration += duration;
       durations.push_back(duration);
+      segmentStarts.push_back(startTime);
       lines.push_back(lineBuf);
     }
 
@@ -154,18 +156,20 @@ namespace Mist{
       lines.pop_back();
       totalDuration -= durations.back();
       durations.pop_back();
+      segmentStarts.pop_back();
       // skip the first two segments when live, unless that brings us under 4 target durations
       while (durations.size() && (totalDuration - durations.front()) > (targetDuration * 4000) && skippedLines < 2){
         lines.pop_front();
         totalDuration -= durations.front();
         durations.pop_front();
+        segmentStarts.pop_front();
         ++skippedLines;
       }
       /*LTS-START*/
       // remove lines to reduce size towards listlimit setting - but keep at least 4X target
       // duration available
-      HLSManifest::trimLiveWindow(lines, durations, targetDuration, config->getInteger("listlimit"),
-                                  skippedLines, totalDuration);
+      HLSManifest::trimLiveWindow(lines, durations, segmentStarts, targetDuration,
+                                  config->getInteger("listlimit"), skippedLines, totalDuration);
       /*LTS-END*/
     }
 
@@ -182,7 +186,12 @@ namespace Mist{
       result << "\",KEYFORMAT=\"com.apple.streamingkeydelivery" << std::endl;
     }
 
-    result << "#EXT-X-MEDIA-SEQUENCE:" << firstFragment + skippedLines << "\r\n";
+    uint64_t fragmentSequence = firstFragment + skippedLines;
+    uint64_t firstSegmentStartTime = segmentStarts.size() ? segmentStarts.front() : 0;
+    result << "#EXT-X-MEDIA-SEQUENCE:"
+           << HLSManifest::mediaSequence(fragmentSequence, firstSegmentStartTime,
+                                         truthyTargetParam(targetParams, "noendlist"))
+           << "\r\n";
 
     for (std::deque<std::string>::iterator it = lines.begin(); it != lines.end(); it++){
       result << *it;

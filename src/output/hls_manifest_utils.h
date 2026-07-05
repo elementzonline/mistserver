@@ -10,8 +10,11 @@ namespace Mist{
                                    uint32_t fallbackTargetDuration);
 
     void trimLiveWindow(std::deque<std::string> &lines, std::deque<uint64_t> &durations,
-                        uint32_t targetDuration, uint64_t listLimit, size_t &skippedLines,
-                        uint64_t &totalDuration);
+                        std::deque<uint64_t> &segmentStarts, uint32_t targetDuration,
+                        uint64_t listLimit, size_t &skippedLines, uint64_t &totalDuration);
+
+    uint64_t mediaSequence(uint64_t fragmentSequence, uint64_t firstSegmentStartTime,
+                           bool noEndList);
 
     bool shouldWriteEndList(bool isLive, uint64_t totalDuration, bool noEndList);
   }// namespace HLSManifest
