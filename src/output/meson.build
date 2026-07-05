@@ -63,6 +63,10 @@ foreach output : outputs
     io_cpp
   ]
 
+  if output.get('format') == 'hls'
+    sources += files('hls_manifest_utils.cpp')
+  endif
+
   if output.has_key('extra')
     extra = output.get('extra')
     if not extra.contains('debased')
@@ -115,4 +119,3 @@ foreach output : outputs
     ]
   }
 endforeach
-

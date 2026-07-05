@@ -6,6 +6,15 @@ resolvetest = executable('resolvetest', 'resolve.cpp', header_tgts, dependencies
 streamstatustest = executable('streamstatustest', 'status.cpp', header_tgts, dependencies: libmist_dep)
 websockettest = executable('websockettest', 'websocket.cpp', header_tgts, dependencies: libmist_dep)
 
+hlsmanifestutilstest = executable(
+  'hlsmanifestutilstest',
+  'hls_manifest_utils.cpp',
+  '../src/output/hls_manifest_utils.cpp',
+  header_tgts,
+  dependencies: libmist_dep,
+)
+test('HLS manifest window helpers', hlsmanifestutilstest, suite: 'HLS')
+
 # Actual unit tests
 test('Redirecting log messages produces no error', exec_tgts.get('MistUtilLog'), suite:'Logs', args: ['BadBinary'], should_fail: true)
 
@@ -229,4 +238,3 @@ test('Empty shift is live edge', flussonicshifttest, suite: 'Flussonic shift', e
 
 #abst_test = executable('abst_test', 'abst_test.cpp', dependencies: libmist_dep)
 #test('MP4::ABST Test', abst_test)
-

@@ -1,8 +1,23 @@
 #include "output_hls.h"
+#include "hls_manifest_utils.h"
 #include <mist/langcodes.h> /*LTS*/
 #include <mist/stream.h>
 #include <mist/url.h>
+#include <map>
 #include <unistd.h>
+
+namespace{
+  void appendQueryParam(std::string &query, const std::string &key, const std::string &value){
+    if (value.empty()){return;}
+    if (query.size()){query += "&";}else{query = "?";}
+    query += key + "=" + value;
+  }
+
+  bool truthyTargetParam(const std::map<std::string, std::string> &params, const std::string &key){
+    std::map<std::string, std::string>::const_iterator it = params.find(key);
+    return it != params.end() && it->second != "0" && it->second != "false" && it->second != "False";
+  }
+}// namespace
 
 namespace Mist{
   bool OutHLS::isReadyForPlay(){
@@ -30,13 +45,22 @@ namespace Mist{
     }
     std::string tknStr;
     if (tkn.size() && Comms::tknMode & 0x04){tknStr = "?tkn=" + tkn;}
-    if (targetParams.count("start")){
-      if (tknStr.size()){ tknStr += "&"; }else{ tknStr = "?"; }
-      tknStr += "start="+targetParams["start"];
+
+    bool noEndList = truthyTargetParam(targetParams, "noendlist");
+    if (noEndList && targetParams.count("startunix")){
+      appendQueryParam(tknStr, "startunix", targetParams["startunix"]);
+    }else if (targetParams.count("start")){
+      appendQueryParam(tknStr, "start", targetParams["start"]);
     }
-    if (targetParams.count("stop")){
-      if (tknStr.size()){ tknStr += "&"; }else{ tknStr = "?"; }
-      tknStr += "stop="+targetParams["stop"];
+    if (noEndList && targetParams.count("duration")){
+      appendQueryParam(tknStr, "duration", targetParams["duration"]);
+    }else if (noEndList && targetParams.count("stopunix")){
+      appendQueryParam(tknStr, "stopunix", targetParams["stopunix"]);
+    }else if (targetParams.count("stop")){
+      appendQueryParam(tknStr, "stop", targetParams["stop"]);
+    }
+    if (noEndList){
+      appendQueryParam(tknStr, "noendlist", targetParams["noendlist"]);
     }
     for (std::map<size_t, Comms::Users>::iterator it = userSelect.begin(); it != userSelect.end(); ++it){
       if (M.getType(it->first) == "video"){
@@ -90,24 +114,10 @@ namespace Mist{
     if (M.getType(timingTid) != "video"){timingTid = M.mainTrack();}
     if (timingTid == INVALID_TRACK_ID){timingTid = tid;}
 
-    std::stringstream result;
     // parse single track
-    uint32_t targetDuration = (M.biggestFragment(timingTid) / 1000) + 1;
-    result << "#EXTM3U\r\n#EXT-X-VERSION:";
-
-    result << (M.getEncryption(tid) == "" ? "3" : "5");
-
-    result << "\r\n#EXT-X-TARGETDURATION:" << targetDuration << "\r\n";
-
-    if (M.getEncryption(tid) != ""){
-      result << "#EXT-X-KEY:METHOD=SAMPLE-AES,URI=\"";
-      result << "urlHere";
-      result << "\",KEYFORMAT=\"com.apple.streamingkeydelivery" << std::endl;
-    }
-
     std::deque<std::string> lines;
-    std::deque<uint16_t> durations;
-    uint32_t totalDuration = 0;
+    std::deque<uint64_t> durations;
+    uint64_t totalDuration = 0;
     DTSC::Keys keys(M.keys(timingTid));
     DTSC::Fragments fragments(M.fragments(timingTid));
     uint32_t firstFragment = fragments.getFirstValid();
@@ -134,6 +144,10 @@ namespace Mist{
       durations.push_back(duration);
       lines.push_back(lineBuf);
     }
+
+    uint32_t fallbackTargetDuration = (M.biggestFragment(timingTid) / 1000) + 1;
+    uint32_t targetDuration = HLSManifest::targetDurationSeconds(durations, fallbackTargetDuration);
+
     size_t skippedLines = 0;
     if (M.getLive() && lines.size() > 1){
       // only print the last segment when non-live
@@ -150,16 +164,22 @@ namespace Mist{
       /*LTS-START*/
       // remove lines to reduce size towards listlimit setting - but keep at least 4X target
       // duration available
-      uint64_t listlimit = config->getInteger("listlimit");
-      if (listlimit){
-        while (lines.size() > listlimit && (totalDuration - durations.front()) > (targetDuration * 4000)){
-          lines.pop_front();
-          totalDuration -= durations.front();
-          durations.pop_front();
-          ++skippedLines;
-        }
-      }
+      HLSManifest::trimLiveWindow(lines, durations, targetDuration, config->getInteger("listlimit"),
+                                  skippedLines, totalDuration);
       /*LTS-END*/
+    }
+
+    std::stringstream result;
+    result << "#EXTM3U\r\n#EXT-X-VERSION:";
+
+    result << (M.getEncryption(tid) == "" ? "3" : "5");
+
+    result << "\r\n#EXT-X-TARGETDURATION:" << targetDuration << "\r\n";
+
+    if (M.getEncryption(tid) != ""){
+      result << "#EXT-X-KEY:METHOD=SAMPLE-AES,URI=\"";
+      result << "urlHere";
+      result << "\",KEYFORMAT=\"com.apple.streamingkeydelivery" << std::endl;
     }
 
     result << "#EXT-X-MEDIA-SEQUENCE:" << firstFragment + skippedLines << "\r\n";
@@ -167,7 +187,10 @@ namespace Mist{
     for (std::deque<std::string>::iterator it = lines.begin(); it != lines.end(); it++){
       result << *it;
     }
-    if (!M.getLive() || !totalDuration){result << "#EXT-X-ENDLIST\r\n";}
+    if (HLSManifest::shouldWriteEndList(M.getLive(), totalDuration,
+                                        truthyTargetParam(targetParams, "noendlist"))){
+      result << "#EXT-X-ENDLIST\r\n";
+    }
     HIGH_MSG("Sending this index: %s", result.str().c_str());
     return result.str();
   }

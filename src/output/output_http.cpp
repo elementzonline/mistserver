@@ -425,6 +425,7 @@ namespace Mist{
       HTTP_CONVERT("startunix");
       HTTP_CONVERT("stopunix");
       HTTP_CONVERT("duration");
+      HTTP_CONVERT("noendlist");
       HTTP_CONVERT("waitkey");
       HTTP_CONVERT("waittrackcount");
       HTTP_CONVERT("mintrackms");
