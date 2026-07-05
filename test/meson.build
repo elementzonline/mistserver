@@ -241,5 +241,17 @@ test(
   suite: 'HLS timestamp',
 )
 
+hls_track_pairing_test = executable(
+  'hls_track_pairing_test',
+  'hls_track_pairing.cpp',
+  header_tgts,
+  dependencies: libmist_dep,
+)
+test(
+  'HLS variants pair audio by timeline',
+  hls_track_pairing_test,
+  suite: 'HLS track pairing',
+)
+
 #abst_test = executable('abst_test', 'abst_test.cpp', dependencies: libmist_dep)
 #test('MP4::ABST Test', abst_test)

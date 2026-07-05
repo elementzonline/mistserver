@@ -1,4 +1,5 @@
 #include "output_hls.h"
+#include "hls_track_pairing.h"
 #include <mist/langcodes.h> /*LTS*/
 #include <mist/stream.h>
 #include <mist/url.h>
@@ -22,10 +23,15 @@ namespace Mist{
     selectDefaultTracks();
     result << "#EXTM3U\r\n";
     size_t audioId = INVALID_TRACK_ID;
+    std::vector<HLSTrackTiming> audioTracks;
     size_t vidTracks = 0;
     bool hasSubs = false;
     for (std::map<size_t, Comms::Users>::iterator it = userSelect.begin(); it != userSelect.end(); ++it){
-      if (audioId == INVALID_TRACK_ID && M.getType(it->first) == "audio"){audioId = it->first;}
+      if (M.getType(it->first) == "audio"){
+        if (audioId == INVALID_TRACK_ID){audioId = it->first;}
+        audioTracks.push_back(
+            HLSTrackTiming{it->first, M.getFirstms(it->first), M.getLastms(it->first), M.getID(it->first)});
+      }
       if (!hasSubs && M.getCodec(it->first) == "subtitle"){hasSubs = true;}
     }
     std::string tknStr;
@@ -41,9 +47,12 @@ namespace Mist{
     for (std::map<size_t, Comms::Users>::iterator it = userSelect.begin(); it != userSelect.end(); ++it){
       if (M.getType(it->first) == "video"){
         ++vidTracks;
+        const size_t pairedAudioId = selectHLSAudioTrack(
+            HLSTrackTiming{it->first, M.getFirstms(it->first), M.getLastms(it->first), M.getID(it->first)},
+            audioTracks);
         int bWidth = M.getBps(it->first);
         if (bWidth < 5){bWidth = 5;}
-        if (audioId != INVALID_TRACK_ID){bWidth += M.getBps(audioId);}
+        if (pairedAudioId != INVALID_TRACK_ID){bWidth += M.getBps(pairedAudioId);}
         result << "#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=" << (bWidth * 8);
         result << ",RESOLUTION=" << M.getWidth(it->first) << "x" << M.getHeight(it->first);
         if (M.getFpks(it->first)){
@@ -52,11 +61,11 @@ namespace Mist{
         if (hasSubs){result << ",SUBTITLES=\"sub1\"";}
         result << ",CODECS=\"";
         result << Util::codecString(M.getCodec(it->first), M.getInit(it->first));
-        if (audioId != INVALID_TRACK_ID){
-          result << "," << Util::codecString(M.getCodec(audioId), M.getInit(audioId));
+        if (pairedAudioId != INVALID_TRACK_ID){
+          result << "," << Util::codecString(M.getCodec(pairedAudioId), M.getInit(pairedAudioId));
         }
         result << "\"\r\n" << it->first;
-        if (audioId != INVALID_TRACK_ID){result << "_" << audioId;}
+        if (pairedAudioId != INVALID_TRACK_ID){result << "_" << pairedAudioId;}
         result << "/index.m3u8" << tknStr << "\r\n";
       }else if (M.getCodec(it->first) == "subtitle"){
 
