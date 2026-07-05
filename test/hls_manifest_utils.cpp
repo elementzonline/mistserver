@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <deque>
+#include <map>
 #include <string>
 
 int main(){
@@ -41,6 +42,15 @@ int main(){
   assert(Mist::HLSManifest::shouldWriteEndList(false, totalDuration, false));
   assert(!Mist::HLSManifest::shouldWriteEndList(true, totalDuration, false));
   assert(Mist::HLSManifest::shouldWriteEndList(true, 0, true));
+
+  std::map<std::string, std::string> relativeUnixParams;
+  relativeUnixParams["startunix"] = "-120";
+  relativeUnixParams["start"] = "123456";
+  relativeUnixParams["duration"] = "60";
+  relativeUnixParams["noendlist"] = "1";
+  std::string query = Mist::HLSManifest::renditionQuery("tok", true, relativeUnixParams);
+  assert(query == "?tkn=tok&start=123456&duration=60&noendlist=1");
+  assert(query.find("startunix") == std::string::npos);
 
   return 0;
 }

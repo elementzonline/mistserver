@@ -5,6 +5,19 @@
 
 namespace Mist{
   namespace HLSManifest{
+    namespace{
+      void appendQueryParam(std::string &query, const std::string &key, const std::string &value){
+        if (value.empty()){return;}
+        if (query.size()){query += "&";}else{query = "?";}
+        query += key + "=" + value;
+      }
+
+      bool truthyTargetParam(const std::map<std::string, std::string> &params, const std::string &key){
+        std::map<std::string, std::string>::const_iterator it = params.find(key);
+        return it != params.end() && it->second != "0" && it->second != "false" && it->second != "False";
+      }
+    }// namespace
+
     uint32_t targetDurationSeconds(const std::deque<uint64_t> &durations, uint32_t fallbackTargetDuration){
       if (durations.empty()){return fallbackTargetDuration;}
       uint64_t maxDuration = *std::max_element(durations.begin(), durations.end());
@@ -42,6 +55,41 @@ namespace Mist{
       if (!totalDuration){return true;}
       if (noEndList){return false;}
       return !isLive;
+    }
+
+    std::string renditionQuery(const std::string &token, bool includeToken,
+                               const std::map<std::string, std::string> &params){
+      std::string query;
+      if (includeToken && token.size()){appendQueryParam(query, "tkn", token);}
+
+      bool noEndList = truthyTargetParam(params, "noendlist");
+      std::map<std::string, std::string>::const_iterator startIt = params.find("start");
+      if (startIt != params.end()){
+        appendQueryParam(query, "start", startIt->second);
+      }else if (!noEndList){
+        std::map<std::string, std::string>::const_iterator startUnixIt = params.find("startunix");
+        if (startUnixIt != params.end()){appendQueryParam(query, "startunix", startUnixIt->second);}
+      }
+
+      std::map<std::string, std::string>::const_iterator durationIt = params.find("duration");
+      if (noEndList && durationIt != params.end()){
+        appendQueryParam(query, "duration", durationIt->second);
+      }else{
+        std::map<std::string, std::string>::const_iterator stopIt = params.find("stop");
+        if (stopIt != params.end()){
+          appendQueryParam(query, "stop", stopIt->second);
+        }else if (!noEndList){
+          std::map<std::string, std::string>::const_iterator stopUnixIt = params.find("stopunix");
+          if (stopUnixIt != params.end()){appendQueryParam(query, "stopunix", stopUnixIt->second);}
+        }
+      }
+
+      if (noEndList){
+        std::map<std::string, std::string>::const_iterator noEndIt = params.find("noendlist");
+        if (noEndIt != params.end()){appendQueryParam(query, "noendlist", noEndIt->second);}
+      }
+
+      return query;
     }
   }// namespace HLSManifest
 }// namespace Mist

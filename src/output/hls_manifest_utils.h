@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <deque>
+#include <map>
 #include <string>
 
 namespace Mist{
@@ -18,5 +19,8 @@ namespace Mist{
                            bool noEndList);
 
     bool shouldWriteEndList(bool isLive, uint64_t totalDuration, bool noEndList);
+
+    std::string renditionQuery(const std::string &token, bool includeToken,
+                               const std::map<std::string, std::string> &params);
   }// namespace HLSManifest
 }// namespace Mist

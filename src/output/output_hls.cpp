@@ -7,12 +7,6 @@
 #include <unistd.h>
 
 namespace{
-  void appendQueryParam(std::string &query, const std::string &key, const std::string &value){
-    if (value.empty()){return;}
-    if (query.size()){query += "&";}else{query = "?";}
-    query += key + "=" + value;
-  }
-
   bool truthyTargetParam(const std::map<std::string, std::string> &params, const std::string &key){
     std::map<std::string, std::string>::const_iterator it = params.find(key);
     return it != params.end() && it->second != "0" && it->second != "false" && it->second != "False";
@@ -43,25 +37,7 @@ namespace Mist{
       if (audioId == INVALID_TRACK_ID && M.getType(it->first) == "audio"){audioId = it->first;}
       if (!hasSubs && M.getCodec(it->first) == "subtitle"){hasSubs = true;}
     }
-    std::string tknStr;
-    if (tkn.size() && Comms::tknMode & 0x04){tknStr = "?tkn=" + tkn;}
-
-    bool noEndList = truthyTargetParam(targetParams, "noendlist");
-    if (noEndList && targetParams.count("startunix")){
-      appendQueryParam(tknStr, "startunix", targetParams["startunix"]);
-    }else if (targetParams.count("start")){
-      appendQueryParam(tknStr, "start", targetParams["start"]);
-    }
-    if (noEndList && targetParams.count("duration")){
-      appendQueryParam(tknStr, "duration", targetParams["duration"]);
-    }else if (noEndList && targetParams.count("stopunix")){
-      appendQueryParam(tknStr, "stopunix", targetParams["stopunix"]);
-    }else if (targetParams.count("stop")){
-      appendQueryParam(tknStr, "stop", targetParams["stop"]);
-    }
-    if (noEndList){
-      appendQueryParam(tknStr, "noendlist", targetParams["noendlist"]);
-    }
+    std::string tknStr = HLSManifest::renditionQuery(tkn, Comms::tknMode & 0x04, targetParams);
     for (std::map<size_t, Comms::Users>::iterator it = userSelect.begin(); it != userSelect.end(); ++it){
       if (M.getType(it->first) == "video"){
         ++vidTracks;
