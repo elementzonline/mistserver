@@ -7,11 +7,13 @@
 int main(){
   std::deque<uint64_t> twoSecondDurations;
   std::deque<uint64_t> segmentStarts;
+  std::deque<uint64_t> segmentIndexes;
   std::deque<std::string> lines;
   uint64_t totalDuration = 0;
   for (size_t i = 0; i < 20; ++i){
     twoSecondDurations.push_back(2002);
     segmentStarts.push_back(48000000 + (i * 2002));
+    segmentIndexes.push_back(3000 + i);
     lines.push_back("segment");
     totalDuration += 2002;
   }
@@ -20,16 +22,18 @@ int main(){
   assert(targetDuration == 3);
 
   size_t skippedLines = 0;
-  Mist::HLSManifest::trimLiveWindow(lines, twoSecondDurations, segmentStarts, targetDuration, 8,
-                                    skippedLines, totalDuration);
+  Mist::HLSManifest::trimLiveWindow(lines, twoSecondDurations, segmentStarts, segmentIndexes,
+                                    targetDuration, 8, skippedLines, totalDuration);
   assert(lines.size() == 8);
   assert(twoSecondDurations.size() == 8);
   assert(segmentStarts.size() == 8);
+  assert(segmentIndexes.size() == 8);
   assert(skippedLines == 12);
   assert(totalDuration == 16016);
   assert(segmentStarts.front() == 48024024);
+  assert(segmentIndexes.front() == 3012);
 
-  assert(Mist::HLSManifest::mediaSequence(0, 48774028, true) == 48774028);
+  assert(Mist::HLSManifest::mediaSequence(3012, 48024024, true) == 3012);
   assert(Mist::HLSManifest::mediaSequence(4, 48774028, false) == 4);
   assert(Mist::HLSManifest::mediaSequence(12, 0, true) == 12);
 

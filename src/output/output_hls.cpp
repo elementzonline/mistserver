@@ -118,6 +118,7 @@ namespace Mist{
     std::deque<std::string> lines;
     std::deque<uint64_t> durations;
     std::deque<uint64_t> segmentStarts;
+    std::deque<uint64_t> segmentIndexes;
     uint64_t totalDuration = 0;
     DTSC::Keys keys(M.keys(timingTid));
     DTSC::Fragments fragments(M.fragments(timingTid));
@@ -144,6 +145,7 @@ namespace Mist{
       totalDuration += duration;
       durations.push_back(duration);
       segmentStarts.push_back(startTime);
+      segmentIndexes.push_back(i);
       lines.push_back(lineBuf);
     }
 
@@ -157,18 +159,20 @@ namespace Mist{
       totalDuration -= durations.back();
       durations.pop_back();
       segmentStarts.pop_back();
+      segmentIndexes.pop_back();
       // skip the first two segments when live, unless that brings us under 4 target durations
       while (durations.size() && (totalDuration - durations.front()) > (targetDuration * 4000) && skippedLines < 2){
         lines.pop_front();
         totalDuration -= durations.front();
         durations.pop_front();
         segmentStarts.pop_front();
+        segmentIndexes.pop_front();
         ++skippedLines;
       }
       /*LTS-START*/
       // remove lines to reduce size towards listlimit setting - but keep at least 4X target
       // duration available
-      HLSManifest::trimLiveWindow(lines, durations, segmentStarts, targetDuration,
+      HLSManifest::trimLiveWindow(lines, durations, segmentStarts, segmentIndexes, targetDuration,
                                   config->getInteger("listlimit"), skippedLines, totalDuration);
       /*LTS-END*/
     }
@@ -186,7 +190,7 @@ namespace Mist{
       result << "\",KEYFORMAT=\"com.apple.streamingkeydelivery" << std::endl;
     }
 
-    uint64_t fragmentSequence = firstFragment + skippedLines;
+    uint64_t fragmentSequence = segmentIndexes.size() ? segmentIndexes.front() : (firstFragment + skippedLines);
     uint64_t firstSegmentStartTime = segmentStarts.size() ? segmentStarts.front() : 0;
     result << "#EXT-X-MEDIA-SEQUENCE:"
            << HLSManifest::mediaSequence(fragmentSequence, firstSegmentStartTime,
