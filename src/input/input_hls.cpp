@@ -1270,8 +1270,10 @@ namespace Mist{
           plsInterval[currentPlaylist] = newTime - plsLastTime[currentPlaylist];
         }
       }
-      // store last time for interval/offset calculations
-      plsLastTime[tid] = newTime;
+      // Store timing history per playlist, matching all reads above. Using the
+      // track ID here lets one ABR rendition consume another track's state when
+      // their numeric IDs collide.
+      plsLastTime[currentPlaylist] = newTime;
     }
     return newTime;
   }

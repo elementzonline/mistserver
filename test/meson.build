@@ -227,6 +227,19 @@ test('Negative shift is live edge', flussonicshifttest, suite: 'Flussonic shift'
 test('Non-numeric shift is live edge', flussonicshifttest, suite: 'Flussonic shift', env: {'T_SHIFT':'abc', 'T_STARTUNIX':''})
 test('Empty shift is live edge', flussonicshifttest, suite: 'Flussonic shift', env: {'T_SHIFT':'', 'T_STARTUNIX':''})
 
+hls_timestamp_test = executable(
+  'hls_timestamp_test',
+  files('hls_timestamp.cpp', '../src/input/input_hls.cpp'),
+  input_cpp,
+  io_cpp,
+  header_tgts,
+  dependencies: libmist_dep,
+)
+test(
+  'ABR playlists keep independent non-UTC timestamp history',
+  hls_timestamp_test,
+  suite: 'HLS timestamp',
+)
+
 #abst_test = executable('abst_test', 'abst_test.cpp', dependencies: libmist_dep)
 #test('MP4::ABST Test', abst_test)
-
