@@ -60,6 +60,9 @@ int main(){
   assert(Mist::HLSManifest::slidingWindowStart(123456, 102500, 100000) == 123456);
   assert(Mist::HLSManifest::shouldSkipInitialLiveSegments(false, false));
   assert(!Mist::HLSManifest::shouldSkipInitialLiveSegments(true, true));
+  assert(Mist::HLSManifest::shouldApplyLivePlaylistRules(false, true, true));
+  assert(Mist::HLSManifest::shouldApplyLivePlaylistRules(true, false, false));
+  assert(!Mist::HLSManifest::shouldApplyLivePlaylistRules(false, false, true));
 
   std::deque<uint64_t> tailDurations;
   std::deque<uint64_t> tailStarts;
@@ -81,6 +84,26 @@ int main(){
   assert(tailStarts.back() == 906006);
   assert(tailIndexes.back() == 703);
   assert(tailTotal == 8008);
+
+  tailDurations.clear();
+  tailStarts.clear();
+  tailIndexes.clear();
+  tailLines.clear();
+  tailTotal = 0;
+  const uint64_t consecutiveTailDurations[] = {2002, 2002, 2002, 900, 340};
+  for (size_t i = 0; i < 5; ++i){
+    tailDurations.push_back(consecutiveTailDurations[i]);
+    tailStarts.push_back(910000 + (i * 2002));
+    tailIndexes.push_back(800 + i);
+    tailLines.push_back("tail-segment");
+    tailTotal += tailDurations.back();
+  }
+  trimmedTail = Mist::HLSManifest::trimTrailingPartialSegments(
+      tailLines, tailDurations, tailStarts, tailIndexes, tailTotal);
+  assert(trimmedTail == 2);
+  assert(tailLines.size() == 3);
+  assert(tailDurations.back() == 2002);
+  assert(tailTotal == 6006);
 
   return 0;
 }

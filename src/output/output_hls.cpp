@@ -132,7 +132,10 @@ namespace Mist{
     uint32_t targetDuration = HLSManifest::targetDurationSeconds(durations, fallbackTargetDuration);
 
     size_t skippedLines = 0;
-    if (M.getLive() && lines.size() > 1){
+    bool noEndList = truthyTargetParam(targetParams, "noendlist");
+    bool hasDuration = targetParams.count("duration");
+    if (HLSManifest::shouldApplyLivePlaylistRules(M.getLive(), noEndList, hasDuration) &&
+        lines.size() > 1){
       // only print the last segment when non-live
       lines.pop_back();
       totalDuration -= durations.back();
@@ -140,8 +143,7 @@ namespace Mist{
       segmentStarts.pop_back();
       segmentIndexes.pop_back();
       // skip the first two segments when live, unless that brings us under 4 target durations
-      while (HLSManifest::shouldSkipInitialLiveSegments(truthyTargetParam(targetParams, "noendlist"),
-                                                        targetParams.count("duration")) &&
+      while (HLSManifest::shouldSkipInitialLiveSegments(noEndList, hasDuration) &&
              durations.size() && (totalDuration - durations.front()) > (targetDuration * 4000) &&
              skippedLines < 2){
         lines.pop_front();
@@ -157,7 +159,7 @@ namespace Mist{
       HLSManifest::trimLiveWindow(lines, durations, segmentStarts, segmentIndexes, targetDuration,
                                   config->getInteger("listlimit"), skippedLines, totalDuration);
       /*LTS-END*/
-      if (truthyTargetParam(targetParams, "noendlist") && targetParams.count("duration")){
+      if (noEndList && hasDuration){
         HLSManifest::trimTrailingPartialSegments(lines, durations, segmentStarts, segmentIndexes,
                                                  totalDuration);
       }
@@ -180,14 +182,13 @@ namespace Mist{
     uint64_t firstSegmentStartTime = segmentStarts.size() ? segmentStarts.front() : 0;
     result << "#EXT-X-MEDIA-SEQUENCE:"
            << HLSManifest::mediaSequence(fragmentSequence, firstSegmentStartTime,
-                                         truthyTargetParam(targetParams, "noendlist"))
+                                         noEndList)
            << "\r\n";
 
     for (std::deque<std::string>::iterator it = lines.begin(); it != lines.end(); it++){
       result << *it;
     }
-    if (HLSManifest::shouldWriteEndList(M.getLive(), totalDuration,
-                                        truthyTargetParam(targetParams, "noendlist"))){
+    if (HLSManifest::shouldWriteEndList(M.getLive(), totalDuration, noEndList)){
       result << "#EXT-X-ENDLIST\r\n";
     }
     HIGH_MSG("Sending this index: %s", result.str().c_str());

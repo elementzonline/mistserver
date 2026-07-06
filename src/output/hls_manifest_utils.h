@@ -33,5 +33,7 @@ namespace Mist{
     uint64_t slidingWindowStart(uint64_t baseStart, uint64_t anchorUnixMs, uint64_t nowUnixMs);
 
     bool shouldSkipInitialLiveSegments(bool noEndList, bool hasDuration);
+
+    bool shouldApplyLivePlaylistRules(bool isLive, bool noEndList, bool hasDuration);
   }// namespace HLSManifest
 }// namespace Mist

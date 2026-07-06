@@ -126,5 +126,9 @@ namespace Mist{
     bool shouldSkipInitialLiveSegments(bool noEndList, bool hasDuration){
       return !(noEndList && hasDuration);
     }
+
+    bool shouldApplyLivePlaylistRules(bool isLive, bool noEndList, bool hasDuration){
+      return isLive || (noEndList && hasDuration);
+    }
   }// namespace HLSManifest
 }// namespace Mist
