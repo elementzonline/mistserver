@@ -157,6 +157,10 @@ namespace Mist{
       HLSManifest::trimLiveWindow(lines, durations, segmentStarts, segmentIndexes, targetDuration,
                                   config->getInteger("listlimit"), skippedLines, totalDuration);
       /*LTS-END*/
+      if (truthyTargetParam(targetParams, "noendlist") && targetParams.count("duration")){
+        HLSManifest::trimTrailingPartialSegments(lines, durations, segmentStarts, segmentIndexes,
+                                                 totalDuration);
+      }
     }
 
     std::stringstream result;

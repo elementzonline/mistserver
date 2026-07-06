@@ -61,5 +61,26 @@ int main(){
   assert(Mist::HLSManifest::shouldSkipInitialLiveSegments(false, false));
   assert(!Mist::HLSManifest::shouldSkipInitialLiveSegments(true, true));
 
+  std::deque<uint64_t> tailDurations;
+  std::deque<uint64_t> tailStarts;
+  std::deque<uint64_t> tailIndexes;
+  std::deque<std::string> tailLines;
+  uint64_t tailTotal = 0;
+  for (size_t i = 0; i < 5; ++i){
+    tailDurations.push_back(i == 4 ? 286 : 2002);
+    tailStarts.push_back(900000 + (i * 2002));
+    tailIndexes.push_back(700 + i);
+    tailLines.push_back("tail-segment");
+    tailTotal += tailDurations.back();
+  }
+  size_t trimmedTail = Mist::HLSManifest::trimTrailingPartialSegments(
+      tailLines, tailDurations, tailStarts, tailIndexes, tailTotal);
+  assert(trimmedTail == 1);
+  assert(tailLines.size() == 4);
+  assert(tailDurations.back() == 2002);
+  assert(tailStarts.back() == 906006);
+  assert(tailIndexes.back() == 703);
+  assert(tailTotal == 8008);
+
   return 0;
 }

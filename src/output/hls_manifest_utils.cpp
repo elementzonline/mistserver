@@ -45,6 +45,26 @@ namespace Mist{
       }
     }
 
+    size_t trimTrailingPartialSegments(std::deque<std::string> &lines,
+                                       std::deque<uint64_t> &durations,
+                                       std::deque<uint64_t> &segmentStarts,
+                                       std::deque<uint64_t> &segmentIndexes,
+                                       uint64_t &totalDuration){
+      size_t trimmed = 0;
+      while (durations.size() > 1 && lines.size()){
+        uint64_t tailDuration = durations.back();
+        uint64_t referenceDuration = durations[durations.size() - 2];
+        if (tailDuration * 10 >= referenceDuration * 9){break;}
+        lines.pop_back();
+        totalDuration -= tailDuration;
+        durations.pop_back();
+        if (segmentStarts.size()){segmentStarts.pop_back();}
+        if (segmentIndexes.size()){segmentIndexes.pop_back();}
+        ++trimmed;
+      }
+      return trimmed;
+    }
+
     uint64_t mediaSequence(uint64_t fragmentSequence, uint64_t firstSegmentStartTime, bool noEndList){
       (void)firstSegmentStartTime;
       (void)noEndList;
