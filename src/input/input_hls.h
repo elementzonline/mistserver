@@ -126,6 +126,7 @@ namespace Mist{
     int targetDuration;
     bool endPlaylist;
     uint64_t currentPlaylist;
+    uint64_t lastLiveHeaderCheckpoint;
 
     bool allowRemap;     ///< True if the next packet may remap the timestamps
     std::map<uint64_t, uint64_t> pidMapping;
@@ -176,6 +177,7 @@ namespace Mist{
     uint64_t getPacketID(uint64_t currentPlaylist, uint64_t trackId);
     virtual void finish();
     void injectLocalVars();
+    void checkpointLiveHeader(bool force = false);
     virtual void checkHeaderTimes(const HTTP::URL & streamFile);
     // Used to immediately mark pages for removal when we're bursting through segments on initial boot
     bool isInitialRun;
