@@ -2,6 +2,13 @@
 # Testing binaries that are not unit tests, but intended for manual use
 convertertest = executable('convertertest', 'converter.cpp', header_tgts, dependencies: libmist_dep)
 urireadertest = executable('urireadertest', 'urireader.cpp', header_tgts, dependencies: libmist_dep)
+urireadercleanuptest = executable(
+  'urireadercleanuptest',
+  'urireader_cleanup.cpp',
+  header_tgts,
+  dependencies: libmist_dep,
+)
+test('URIReader closes local files on destruction', urireadercleanuptest, suite: 'URIReader')
 resolvetest = executable('resolvetest', 'resolve.cpp', header_tgts, dependencies: libmist_dep)
 streamstatustest = executable('streamstatustest', 'status.cpp', header_tgts, dependencies: libmist_dep)
 websockettest = executable('websockettest', 'websocket.cpp', header_tgts, dependencies: libmist_dep)

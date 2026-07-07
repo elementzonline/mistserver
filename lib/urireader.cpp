@@ -109,6 +109,8 @@ namespace HTTP{
     open(reluri);
   }
 
+  URIReader::~URIReader(){close();}
+
   bool URIReader::open(const std::string &reluri){return open(originalUrl.link(reluri));}
 
   /// Internal callback function, used to buffer data.
@@ -159,7 +161,7 @@ namespace HTTP{
         int xRes = fstat(handle, &buffStats);
         if (xRes < 0){
           FAIL_MSG("Checking size of '%s' failed: %s", myURI.getFilePath().c_str(), strerror(errno));
-          stateType = HTTP::Closed;
+          close();
           return false;
         }
         totalSize = buffStats.st_size;
@@ -169,7 +171,7 @@ namespace HTTP{
         if (mapped == MAP_FAILED){
           FAIL_MSG("Memory-mapping file '%s' failed: %s", myURI.getFilePath().c_str(), strerror(errno));
           mapped = 0;
-          stateType = HTTP::Closed;
+          close();
           return false;
         }
         startPos = 0;
