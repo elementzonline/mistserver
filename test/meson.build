@@ -22,6 +22,14 @@ hlsmanifestutilstest = executable(
 )
 test('HLS manifest window helpers', hlsmanifestutilstest, suite: 'HLS')
 
+hlslivestarttest = executable(
+  'hlslivestarttest',
+  'hls_live_start.cpp',
+  header_tgts,
+  dependencies: libmist_dep,
+)
+test('HLS live start buffer selects tail window', hlslivestarttest, suite: 'HLS')
+
 # Actual unit tests
 test('Redirecting log messages produces no error', exec_tgts.get('MistUtilLog'), suite:'Logs', args: ['BadBinary'], should_fail: true)
 
