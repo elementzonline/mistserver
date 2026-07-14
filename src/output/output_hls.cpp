@@ -224,7 +224,7 @@ namespace Mist{
       ["blacklist",["Mozilla/"]],
       ["whitelist",["iPad","iPhone","iPod","MacIntel","Edge"]]
     ])-");
-    capa["exceptions"]["codec:HEVC"].fromString("[[\"blacklist\"]]");
+    // capa["exceptions"]["codec:HEVC"].fromString("[[\"blacklist\"]]");
 
     cfg->addOption("listlimit", R"-({
       "arg":"integer","default":0,
